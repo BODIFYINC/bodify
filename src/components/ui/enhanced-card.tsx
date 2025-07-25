@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from './card';
+import { Card } from './card';
 
 interface EnhancedCardProps {
   children: React.ReactNode;
@@ -9,6 +9,7 @@ interface EnhancedCardProps {
   hoverEffect?: boolean;
   glowEffect?: boolean;
   onClick?: () => void;
+  premium?: boolean;
 }
 
 export const EnhancedCard: React.FC<EnhancedCardProps> = ({
@@ -16,31 +17,34 @@ export const EnhancedCard: React.FC<EnhancedCardProps> = ({
   className = '',
   hoverEffect = true,
   glowEffect = false,
-  onClick
+  onClick,
+  premium = true
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={hoverEffect ? { 
-        scale: 1.02, 
-        y: -5,
-        boxShadow: glowEffect 
-          ? '0 20px 40px rgba(156, 77, 204, 0.3), 0 0 20px rgba(247, 156, 66, 0.2)'
-          : '0 20px 40px rgba(0, 0, 0, 0.3)'
+        scale: 1.03, 
+        y: -8,
+        transition: { duration: 0.3, ease: "easeOut" }
       } : {}}
       whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`cursor-pointer ${className}`}
       onClick={onClick}
     >
-      <Card className={`glassmorphism border-0 overflow-hidden backdrop-blur-lg ${
-        glowEffect ? 'border border-white/20 shadow-2xl' : ''
-      }`}>
+      <Card className={`
+        ${premium ? 'card-premium' : 'glassmorphism'} 
+        border-0 overflow-hidden 
+        ${glowEffect ? 'glow-premium' : ''} 
+        ${hoverEffect ? 'hover:shadow-glow-hover' : ''}
+        transition-all duration-500 ease-out
+      `}>
         {children}
       </Card>
     </motion.div>
   );
 };
 
-export { CardContent };
+export { Card };
