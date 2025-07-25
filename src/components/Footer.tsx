@@ -10,7 +10,7 @@ const TikTokIcon = () => (
 
 const Footer = () => {
   return (
-    <footer className="glassmorphism-dark py-20 mt-24 border-t border-white/10">
+    <footer className="glassmorphism-dark py-20 mt-24 border-t-4 border-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff]">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-6 md:col-span-2">
@@ -19,13 +19,13 @@ const Footer = () => {
               Transform your fitness journey with AI-powered personalized coaching that delivers real results.
             </p>
             <p className="text-white/80 text-lg leading-relaxed max-w-md">
-              Bodify has been accepted into the Acceleration Program by <a href="https://www.fastercapital.com" target="_blank" rel="noreferrer" className="text-bodify-orange hover:text-white transition-colors underline">FasterCapital</a> and is currently raising $50,000.
+              Bodify has been accepted into the Acceleration Program by <a href="https://www.fastercapital.com" target="_blank" rel="noreferrer" className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] font-bold underline hover:opacity-80 transition-all">FasterCapital</a> and is currently raising $50,000.
             </p>
             <div className="flex space-x-4">
-              <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="p-3 rounded-lg bg-white/10 text-white hover:text-bodify-orange hover:bg-white/20 transition-all">
+              <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="p-3 rounded-lg bg-[#232946] text-white hover:text-[#ff5ecf] hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:bg-clip-text hover:font-bold transition-all">
                 <Instagram size={20} />
               </a>
-              <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="p-3 rounded-lg bg-white/10 text-white hover:text-bodify-orange hover:bg-white/20 transition-all">
+              <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="p-3 rounded-lg bg-[#232946] text-white hover:text-[#ff5ecf] hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:bg-clip-text hover:font-bold transition-all">
                 <TikTokIcon />
               </a>
             </div>
@@ -34,24 +34,24 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-white text-xl mb-6">Company</h3>
             <ul className="space-y-4">
-              <li><Link to="/about" className="text-white/80 hover:text-white transition-colors text-lg">About</Link></li>
-              <li><Link to="/careers" className="text-white/80 hover:text-white transition-colors text-lg">Careers</Link></li>
-              <li><Link to="/team" className="text-white/80 hover:text-white transition-colors text-lg">Team</Link></li>
+              <li><Link to="/about" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">About</Link></li>
+              <li><Link to="/careers" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">Careers</Link></li>
+              <li><Link to="/team" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">Team</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-bold text-white text-xl mb-6">Support</h3>
             <ul className="space-y-4">
-              <li><Link to="/contact" className="text-white/80 hover:text-white transition-colors text-lg">Contact Us</Link></li>
-              <li><Link to="/faq" className="text-white/80 hover:text-white transition-colors text-lg">FAQ</Link></li>
-              <li><Link to="/privacy" className="text-white/80 hover:text-white transition-colors text-lg">Privacy</Link></li>
-              <li><Link to="/terms" className="text-white/80 hover:text-white transition-colors text-lg">Terms</Link></li>
+              <li><Link to="/contact" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">Contact Us</Link></li>
+              <li><Link to="/faq" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">FAQ</Link></li>
+              <li><Link to="/privacy" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">Privacy</Link></li>
+              <li><Link to="/terms" className="text-white/80 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] hover:font-bold transition-all text-lg">Terms</Link></li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-white/20 mt-16 pt-8 text-center text-white/60 text-lg">
+        <div className="border-t border-[#232946] mt-16 pt-8 text-center text-white/60 text-lg">
           <p>&copy; {new Date().getFullYear()} Bodify Inc. All rights reserved.</p>
         </div>
       </div>

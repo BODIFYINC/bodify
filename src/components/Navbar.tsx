@@ -35,26 +35,26 @@ const Navbar = () => {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out", 
-      isScrolled ? "bg-bodify-dark/90 backdrop-blur-lg py-3 shadow-2xl border-b border-white/10" : "bg-transparent py-5"
+      "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b-4 border-transparent",
+      isScrolled ? "bg-black/90 backdrop-blur-lg py-3 shadow-2xl border-b-4 border-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff]" : "bg-transparent py-5 border-b-4 border-transparent"
     )}>
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center">
           <BodifyLogo className="h-10 w-auto" />
         </Link>
-        
+
         <div className="hidden md:flex items-center space-x-1">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white hover:text-bodify-orange bg-transparent data-[state=open]:bg-white/10">
+                <NavigationMenuTrigger className="text-white hover:text-[#ff8800] bg-transparent data-[state=open]:bg-[#232946]/80 transition-colors">
                   Product
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-bodify-dark/95 backdrop-blur-lg border border-white/20 rounded-xl">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-[#181824]/95 backdrop-blur-lg border border-[#232946] rounded-xl">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
-                        <Link to="/" className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-bodify-purple/30 to-bodify-orange/30 p-6 no-underline outline-none focus:shadow-md hover:bg-gradient-to-b hover:from-bodify-purple/40 hover:to-bodify-orange/40 transition-all">
+                        <Link to="/" className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-[#a259ff]/30 via-[#ff5ecf]/30 to-[#ff8800]/30 p-6 no-underline outline-none focus:shadow-md hover:bg-gradient-to-b hover:from-[#a259ff]/40 hover:to-[#ff8800]/40 transition-all">
                           <div className="mb-2 mt-4 text-lg font-medium text-white">
                             AI Fitness Coach
                           </div>
@@ -78,11 +78,11 @@ const Navbar = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white hover:text-bodify-orange bg-transparent data-[state=open]:bg-white/10">
+                <NavigationMenuTrigger className="text-white hover:text-bodify-orange bg-transparent data-[state=open]:bg-[#232946]/80">
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2 bg-bodify-dark/95 backdrop-blur-lg border border-white/20 rounded-xl">
+                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2 bg-[#181824]/95 backdrop-blur-lg border border-[#232946] rounded-xl">
                     <ListItem to="/about" title="About">
                       Learn about our mission
                     </ListItem>
@@ -101,7 +101,7 @@ const Navbar = () => {
               
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link to="/faq" className="text-white hover:text-bodify-orange px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+                  <Link to="/faq" className="text-white hover:text-bodify-orange px-4 py-2 rounded-lg hover:bg-[#232946]/80 transition-all">
                     FAQ
                   </Link>
                 </NavigationMenuLink>
@@ -110,19 +110,19 @@ const Navbar = () => {
           </NavigationMenu>
           
           <div className="flex items-center space-x-4 ml-8">
-            <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-white/10">
+            <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-[#232946]/80">
               <Instagram size={20} />
             </a>
-            <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-white/10">
+            <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-[#232946]/80">
               <TikTokIcon />
             </a>
             <Link to="/login">
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 rounded-lg px-6">
+              <Button variant="outline" className="border-[#4f8cff] text-white hover:bg-[#232946] hover:text-white hover:border-[#a259ff] rounded-lg px-6">
                 Log in
               </Button>
             </Link>
             <Link to="/get-started">
-              <Button className="bg-bodify-gradient hover:opacity-90 transition-all duration-300 rounded-lg px-6 shadow-lg">
+              <Button className="bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-white font-bold hover:opacity-90 transition-all duration-300 rounded-lg px-6 shadow-lg">
                 Get Started
               </Button>
             </Link>

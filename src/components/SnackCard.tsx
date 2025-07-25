@@ -62,8 +62,8 @@ export const SnackCard: React.FC<SnackCardProps> = ({
                 variant={isCompleted ? "default" : "outline"}
                 size="sm"
                 className={isCompleted
-                  ? "bg-green-500 hover:bg-green-600 text-white"
-                  : "border-white/20 hover:bg-white/10"}
+                  ? "bg-gradient-to-r from-[#4f8cff] to-[#a259ff] text-white hover:from-[#ff8800] hover:to-[#ff5ecf]"
+                  : "border-[#4f8cff] hover:bg-[#232946] text-white"}
                 onClick={onMarkComplete}
               >
                 {isCompleted ? (

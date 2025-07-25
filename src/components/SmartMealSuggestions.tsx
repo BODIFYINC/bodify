@@ -173,8 +173,8 @@ export const SmartMealSuggestions: React.FC<SmartMealSuggestionsProps> = ({
             size="sm"
             onClick={() => setSelectedCategory(category)}
             className={selectedCategory === category ? 
-              "bg-bodify-gradient" : 
-              "border-white/20 hover:bg-white/10"
+              "bg-gradient-to-r from-[#4f8cff] to-[#a259ff] text-white" : 
+              "border-[#4f8cff] hover:bg-[#232946] text-white"
             }
           >
             <span className="mr-2">{getCategoryIcon(category)}</span>

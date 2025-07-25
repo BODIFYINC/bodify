@@ -33,21 +33,30 @@ export const NutritionDashboard: React.FC<NutritionDashboardProps> = ({ currentM
 
         const fullProfile = NutritionAnalyzer.analyzeUserProfile(profile);
         setNutritionProfile(fullProfile);
-        
-        if (currentMealPlan) {
+
+        if (
+          currentMealPlan &&
+          fullProfile &&
+          typeof fullProfile.targetCalories === 'number' &&
+          fullProfile.macroTargets &&
+          typeof fullProfile.macroTargets.protein === 'number'
+        ) {
           const totalNutrition = NutritionAnalyzer.calculateTotalNutrition(currentMealPlan);
           const calorieBalance = (totalNutrition.calories / fullProfile.targetCalories) * 100;
           const proteinAdequacy = (totalNutrition.protein / fullProfile.macroTargets.protein) * 100;
-          
+
+          const mealPlanAnalysis = NutritionAnalyzer.analyzeMealPlan(currentMealPlan, fullProfile);
           setAnalysis({
             calorieBalance,
             proteinAdequacy,
             nutritionScore: Math.min((calorieBalance + proteinAdequacy) / 2, 100),
-            macroBalance: NutritionAnalyzer.analyzeMealPlan(currentMealPlan, fullProfile).macroBalance,
-            recommendations: NutritionAnalyzer.analyzeMealPlan(currentMealPlan, fullProfile).recommendations
+            macroBalance: mealPlanAnalysis.macroBalance,
+            recommendations: mealPlanAnalysis.recommendations
           });
+        } else {
+          setAnalysis(null);
         }
-        
+
         setLoading(false);
       } catch (error) {
         console.error('Error loading nutrition data:', error);
@@ -62,7 +71,10 @@ export const NutritionDashboard: React.FC<NutritionDashboardProps> = ({ currentM
     return (
       <div className="space-y-4">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="h-32 bg-white/5 animate-pulse rounded-lg" />
+          <div
+            key={i}
+            className="h-32 animate-pulse rounded-lg bg-gradient-to-br from-[#18181c] via-[#23232a] to-[#2a2a38] border border-[#23232a]/60 shadow-lg"
+          />
         ))}
       </div>
     );

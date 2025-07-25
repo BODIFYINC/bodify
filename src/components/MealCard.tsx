@@ -114,10 +114,10 @@ export const MealCard: React.FC<MealCardProps> = ({
   if (!meal) {
     return (
       <div className="animate-pulse">
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-          <div className="w-full h-48 bg-white/10 rounded mb-4"></div>
-          <div className="h-4 bg-white/10 rounded mb-2"></div>
-          <div className="h-3 bg-white/10 rounded"></div>
+        <div className="bg-[#232946] border border-[#181824] rounded-lg p-4">
+          <div className="w-full h-48 bg-[#181824] rounded mb-4"></div>
+          <div className="h-4 bg-[#181824] rounded mb-2"></div>
+          <div className="h-3 bg-[#181824] rounded"></div>
         </div>
       </div>
     );
@@ -180,12 +180,12 @@ export const MealCard: React.FC<MealCardProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <AnimatedButton
-                  variant="outline"
-                  size="sm"
-                  className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                  onClick={handleGenerateNew}
-                >
+            <AnimatedButton
+              variant="outline"
+              size="sm"
+              className="bg-[#232946] border-[#4f8cff] text-white hover:bg-[#4f8cff]/80 backdrop-blur-sm"
+              onClick={handleGenerateNew}
+            >
                   <Shuffle size={14} className="mr-1" />
                   New
                 </AnimatedButton>
@@ -216,8 +216,8 @@ export const MealCard: React.FC<MealCardProps> = ({
               variant={isCompleted ? "default" : "outline"}
               size="sm"
               className={isCompleted
-                ? "bg-green-500 hover:bg-green-600 text-white"
-                : "border-white/20 hover:bg-white/10 text-white"}
+                ? "bg-gradient-to-r from-[#4f8cff] to-[#a259ff] hover:from-[#ff8800] hover:to-[#ff5ecf] text-white"
+                : "border-[#4f8cff] hover:bg-[#232946] text-white"}
               onClick={handleMarkComplete}
               glowEffect={!isCompleted}
             >

@@ -135,7 +135,7 @@ const Workouts: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all">
+              <Card className="bg-[#232946] border-[#181824] hover:bg-[#181824] transition-all">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
@@ -163,8 +163,8 @@ const Workouts: React.FC = () => {
                       key={exercise.id}
                       className={`p-3 rounded-lg border transition-all ${
                         completedExercises.has(exercise.id)
-                          ? 'bg-green-500/20 border-green-500/50'
-                          : 'bg-white/5 border-white/10'
+                          ? 'bg-gradient-to-r from-[#4f8cff] to-[#a259ff] border-[#4f8cff]'
+                          : 'bg-[#232946] border-[#181824]'
                       }`}
                     >
                       <div className="flex justify-between items-start mb-2">
@@ -174,8 +174,8 @@ const Workouts: React.FC = () => {
                           variant={completedExercises.has(exercise.id) ? "default" : "outline"}
                           onClick={() => toggleExerciseComplete(exercise.id, exercise.calories)}
                           className={completedExercises.has(exercise.id) 
-                            ? "bg-green-500 hover:bg-green-600" 
-                            : "border-white/20 hover:bg-white/10"
+                            ? "bg-gradient-to-r from-[#4f8cff] to-[#a259ff] text-white hover:from-[#ff8800] hover:to-[#ff5ecf]" 
+                            : "border-[#4f8cff] hover:bg-[#232946] text-white"
                           }
                         >
                           <CheckCircle2 size={16} className="mr-1" />

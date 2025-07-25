@@ -145,7 +145,7 @@ export const WaterTracker: React.FC = () => {
             size="sm"
             onClick={() => addWater(-1)}
             disabled={waterIntake === 0}
-            className="border-white/20 hover:bg-white/10"
+            className="border-[#4f8cff] hover:bg-[#232946] text-white"
           >
             <Minus size={16} />
           </AnimatedButton>
@@ -204,13 +204,12 @@ export const WaterTracker: React.FC = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-3 rounded-lg bg-white/5">
+          <div className="text-center p-3 rounded-lg bg-gradient-to-br from-[#18181c] via-[#23232a] to-[#2a2a38] border border-[#23232a]/60 shadow-lg">
             <Target className="w-6 h-6 mx-auto mb-1 text-blue-400" />
             <p className="text-sm text-white/70">Daily Goal</p>
             <p className="font-bold">{dailyGoal} glasses</p>
           </div>
-          
-          <div className="text-center p-3 rounded-lg bg-white/5">
+          <div className="text-center p-3 rounded-lg bg-gradient-to-br from-[#18181c] via-[#23232a] to-[#2a2a38] border border-[#23232a]/60 shadow-lg">
             <Award className="w-6 h-6 mx-auto mb-1 text-bodify-orange" />
             <p className="text-sm text-white/70">Streak</p>
             <p className="font-bold">{streak} days</p>

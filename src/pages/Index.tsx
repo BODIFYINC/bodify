@@ -36,9 +36,13 @@ const Index = () => {
       `}</style>
       
       {/* Hero Section - Improved spacing and layout */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bodify-dark/50 to-bodify-darker z-0"></div>
-        
+      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden">
+        {/* Multi-color animated gradient background */}
+        <div className="absolute inset-0 z-0">
+          <div className="w-full h-full bg-gradient-to-br from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90"></div>
+        </div>
+
         <div className="container mx-auto px-6 z-10 max-w-6xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -47,26 +51,26 @@ const Index = () => {
             className="text-center"
           >
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 rounded-full bg-bodify-gradient/20 border border-bodify-orange/30 text-bodify-orange text-sm font-medium mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-black/90 font-semibold shadow-lg border border-white/20 text-sm mb-6">
                 🚀 AI-Powered Fitness Revolution
               </span>
             </div>
-            
+
             <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-              <span className="text-transparent bg-clip-text bg-bodify-gradient">Transform</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move">Transform</span>
               <br />
-              Your Body
+              <span className="text-white drop-shadow-lg">Your Body</span>
             </h1>
-            
-            <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Experience the future of fitness with AI-powered personalized coaching that adapts to your unique goals, schedule, and preferences.
+
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Experience the future of fitness with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff]">AI-powered personalized coaching</span> that adapts to your unique goals, schedule, and preferences.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-              <Button asChild className="btn-primary text-lg px-10 py-6 rounded-xl shadow-2xl">
+              <Button asChild className="btn-primary text-lg px-10 py-6 rounded-xl shadow-2xl bg-gradient-to-r from-[#232946] via-[#4f8cff] via-40% via-[#a259ff] to-[#ff5ecf] text-white font-bold border-0 hover:scale-105 hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] transition-transform">
                 <Link to="/get-started">Start Your Journey</Link>
               </Button>
-              <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg px-10 py-6 rounded-xl backdrop-blur-sm">
+              <Button asChild variant="outline" className="border-[#4f8cff] text-white hover:bg-[#232946] hover:text-white text-lg px-10 py-6 rounded-xl backdrop-blur-sm">
                 <a href="#features">Discover Features</a>
               </Button>
             </div>
@@ -86,8 +90,8 @@ const Index = () => {
                   transition={{ delay: 0.5 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-bodify-orange mb-2">{stat.number}</div>
-                  <div className="text-white/70 text-sm">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-transparent bg-clip-text mb-2 drop-shadow-lg">{stat.number}</div>
+                  <div className="text-white/80 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -95,8 +99,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Features Section - Better organized */}
-      <section id="features" className="py-24 bg-bodify-dark/50">
+      {/* Features Section - Bento grid, glassmorphism, kinetic typography */}
+      <section id="features" className="py-24 bg-gradient-to-b from-[#181824] via-[#232946] to-[#181824]">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -104,37 +108,39 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">Why Choose Bodify?</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <h2 className="text-6xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move">
+              Why Choose Bodify?
+            </h2>
+            <p className="text-2xl text-white/80 max-w-3xl mx-auto kinetic-typography">
               Revolutionary AI technology meets expert fitness knowledge to deliver results that matter
             </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bento-grid">
             {[
               {
                 icon: Zap,
                 title: "AI Coach",
                 description: "24/7 intelligent coaching that learns and adapts to your progress.",
-                color: "text-yellow-400"
+                color: "bg-gradient-to-br from-[#a259ff] via-[#ff5ecf] to-[#ff8800]"
               },
               {
                 icon: Target,
                 title: "Smart Training",
                 description: "Personalized workouts optimized for your goals and equipment.",
-                color: "text-green-400"
+                color: "bg-gradient-to-br from-[#4f8cff] via-[#ffe066] to-[#ff8800]"
               },
               {
                 icon: Users,
                 title: "Custom Nutrition",
                 description: "Meal plans tailored to your dietary preferences and lifestyle.",
-                color: "text-blue-400"
+                color: "bg-gradient-to-br from-[#ff5ecf] via-[#a259ff] to-[#4f8cff]"
               },
               {
                 icon: Trophy,
                 title: "Real Results",
                 description: "Track progress with advanced analytics and insights.",
-                color: "text-purple-400"
+                color: "bg-gradient-to-br from-[#ffe066] via-[#ff8800] to-[#a259ff]"
               }
             ].map((feature, index) => (
               <motion.div
@@ -145,12 +151,12 @@ const Index = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <Card className="glassmorphism rounded-2xl p-8 h-full border-0 hover:bg-white/15 transition-all duration-300 group-hover:scale-105">
-                  <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br from-bodify-purple to-bodify-orange flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <Card className="rounded-2xl p-8 h-full border border-[#232946] bg-gradient-to-br from-[#232946] via-[#181824] to-[#232946] shadow-xl glassmorphism-bento hover:scale-105 transition-transform duration-300">
+                  <div className={`h-16 w-16 rounded-2xl flex items-center justify-center mb-6 ${feature.color} shadow-lg animate-icon-pop`}>
                     <feature.icon className={`h-8 w-8 text-white`} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                  <p className="text-white/80 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-2xl font-extrabold mb-4 text-white kinetic-typography">{feature.title}</h3>
+                  <p className="text-white/80 leading-relaxed text-lg">{feature.description}</p>
                 </Card>
               </motion.div>
             ))}
