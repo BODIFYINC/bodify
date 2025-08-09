@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card } from './card';
+import { Card, CardContent } from './card';
 
 interface EnhancedCardProps {
   children: React.ReactNode;
@@ -102,7 +102,7 @@ export const EnhancedCard: React.FC<EnhancedCardProps> = ({
   );
 };
 
-export { Card };
+export { Card, CardContent };
 
 // Additional card variants for specific use cases
 export const MealCard: React.FC<Omit<EnhancedCardProps, 'variant'>> = (props) => (
