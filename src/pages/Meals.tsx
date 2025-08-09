@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Meal, MealPlan } from '../types/meal';
-import { generateMealPlan, saveMealProgress, getMealProgress, getProgressHistory, clearOldProgress, clearCurrentDayProgress } from '../services/mealService';
+import { generateMealPlan, saveMealProgress, getMealProgress, getProgressHistory, clearAllProgress, clearCurrentDayProgress } from '../services/mealService';
 
 const Meals: React.FC = () => {
   const [mealPlan, setMealPlan] = useState<MealPlan | null>(null);
@@ -14,7 +14,7 @@ const Meals: React.FC = () => {
 
   useEffect(() => {
     // Clear old progress data when component mounts (handles new day reset)
-    clearOldProgress();
+    clearAllProgress();
     loadMealPlan();
 
     // Listen for custom event when settings are updated

@@ -153,7 +153,7 @@ export class NutritionAnalyzer {
     };
   }
   
-  private static calculateTotalNutrition(mealPlan: any) {
+  static calculateTotalNutrition(mealPlan: any) {
     const meals = [mealPlan.breakfast, mealPlan.lunch, mealPlan.dinner, ...mealPlan.snacks];
     
     return meals.reduce((total, meal) => ({

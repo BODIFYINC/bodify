@@ -1,6 +1,6 @@
 import { Meal } from './enhancedMealService';
 
-export const expandedMealDatabase: Meal[] = [
+export const expandedMealDatabase = [
   // High-Protein Breakfast Options
   {
     id: 'protein-pancakes-1',
@@ -269,9 +269,8 @@ export const expandedMealDatabase: Meal[] = [
   }
 ];
 
-// Combine with existing meals
 export function getAllExpandedMeals(): Meal[] {
-  return [...expandedMealDatabase];
+  return [...expandedMealDatabase] as unknown as Meal[];
 }
 
 export function getMealsByType(type: 'breakfast' | 'lunch' | 'dinner' | 'snacks'): Meal[] {
@@ -296,5 +295,5 @@ export function getMealsByType(type: 'breakfast' | 'lunch' | 'dinner' | 'snacks'
       break;
   }
 
-  return expandedMealDatabase.filter(meal => targetIds.includes(meal.id));
+  return expandedMealDatabase.filter(meal => targetIds.includes(meal.id)) as unknown as Meal[];
 }

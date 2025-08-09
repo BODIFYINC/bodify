@@ -1,7 +1,7 @@
 import { Meal } from './enhancedMealService';
 import { getAllExpandedMeals, getMealsByType } from './expandedMealDatabase';
 
-export const realisticMealDatabase: Meal[] = [
+export const realisticMealDatabase = [
   // Breakfast
   {
     id: 'veggie-egg-scramble',
@@ -833,7 +833,7 @@ export function getValidImageUrl(imageUrl: string): string {
 export function getAllRealisticMeals(): Meal[] {
   const originalMeals = realisticMealDatabase;
   const expandedMeals = getAllExpandedMeals();
-  return [...originalMeals, ...expandedMeals];
+  return [...originalMeals, ...expandedMeals] as unknown as Meal[];
 }
 
 export function getMealsByGoal(goal: 'weight_loss' | 'muscle_gain'): {
