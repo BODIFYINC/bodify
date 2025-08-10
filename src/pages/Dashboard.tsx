@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Transition } from 'framer-motion';
 import { CalendarDays, Flame, ListChecks, BarChart3, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,7 +27,7 @@ const pageVariants = {
   exit: { opacity: 0, x: 200 },
 };
 
-const pageTransitions = {
+const pageTransitions: Transition = {
   type: 'spring',
   stiffness: 80,
   damping: 20,
