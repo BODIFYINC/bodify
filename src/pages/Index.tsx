@@ -39,7 +39,7 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden">
         {/* Multi-color animated gradient background */}
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move opacity-90"></div>
+          <div className="w-full h-full bg-bodify-gradient-animated animate-gradient-x opacity-90"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90"></div>
         </div>
 
@@ -100,7 +100,7 @@ const Index = () => {
       </section>
       
       {/* Features Section - Bento grid, glassmorphism, kinetic typography */}
-      <section id="features" className="py-24 bg-gradient-to-b from-[#181824] via-[#232946] to-[#181824]">
+      <section id="features" className="py-24 bg-gradient-to-b from-bodify-darker via-bodify-dark to-bodify-darker">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-6xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move">
+            <h2 className="text-6xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-bodify-gradient-animated animate-gradient-shift">
               Why Choose Bodify?
             </h2>
             <p className="text-2xl text-white/80 max-w-3xl mx-auto kinetic-typography">
@@ -151,7 +151,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <Card className="rounded-2xl p-8 h-full border border-[#232946] bg-gradient-to-br from-[#232946] via-[#181824] to-[#232946] shadow-xl glassmorphism-bento hover:scale-105 transition-transform duration-300">
+                <Card className="rounded-2xl p-8 h-full border border-border bg-gradient-to-br from-bodify-darker via-bodify-dark to-bodify-darker shadow-xl glassmorphism-bento hover:scale-105 transition-transform duration-300">
                   <div className={`h-16 w-16 rounded-2xl flex items-center justify-center mb-6 ${feature.color} shadow-lg animate-icon-pop`}>
                     <feature.icon className={`h-8 w-8 text-white`} />
                   </div>
