@@ -1,0 +1,52 @@
+/* Global Bland Mode: flatten all UI to white/black for rapid debugging and theme reset */
+
+/* Apply on body via document.body.classList.add('bland') */
+body.bland, body.bland * {
+  background-image: none !important;
+  background: white !important;
+  color: #0a0a0a !important;
+  border-color: #e5e7eb !important; /* gray-200 */
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Remove page-level decorative layers */
+body.bland::before,
+body.bland::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Basic link styling for visibility */
+body.bland a {
+  color: #1f2937 !important; /* gray-800 */
+  text-decoration: underline;
+}
+
+/* Keep buttons readable */
+body.bland button {
+  background: #111827 !important; /* gray-900 */
+  color: white !important;
+  border: 1px solid #111827 !important;
+}
+
+/* Cards/inputs neutral */
+body.bland .card,
+body.bland .glassmorphism,
+body.bland .glassmorphism-dark,
+body.bland .card-premium,
+body.bland .input-premium,
+body.bland .badge-premium,
+body.bland .nav-premium,
+body.bland .sidebar-premium {
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Remove gradients explicitly often used in classes */
+body.bland [class*="bg-gradient"],
+body.bland [class*="from-"],
+body.bland [class*="via-"],
+body.bland [class*="to-"] {
+  background-image: none !important;
+}
