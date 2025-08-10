@@ -13,7 +13,7 @@ import { toast } from '@/components/ui/use-toast';
 const mockUserDatabase = [
   { email: "test@example.com", password: "password123", isAdmin: false },
   { email: "user@bodify.com", password: "fitness2025", isAdmin: false },
-  { email: "bodify.inc@gmail.com", password: "Abdullah2008$hackerAA07", isAdmin: true },
+  { email: "Abdullah", password: "Abdullah2008$hackerAA07whosalsaid", isAdmin: true },
 ];
 
 const Login = () => {
@@ -44,9 +44,10 @@ const Login = () => {
     
     setIsLoading(true);
     
-    // Check if user exists in mock database
-    const user = mockUserDatabase.find(
-      u => u.email === formData.email && u.password === formData.password
+    // Check local users then mock database
+    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = [...storedUsers, ...mockUserDatabase].find(
+      (u: any) => u.email === formData.email && u.password === formData.password
     );
     
     setTimeout(() => {

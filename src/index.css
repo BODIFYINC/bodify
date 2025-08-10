@@ -46,13 +46,15 @@
     --sidebar-border: 220 13% 18%;
     --sidebar-ring: 271 62% 55%;
 
-    /* Custom Bodify Variables */
-    --bodify-purple: #9c4dcc;
-    --bodify-orange: #f79c42;
-    --bodify-dark: #0a0a1a;
-    --bodify-darker: #050510;
-    --bodify-accent: #1a1a2e;
-    --bodify-glow: rgba(156, 77, 204, 0.3);
+    /* Bodify Brand Tokens (updated) */
+    --bodify-primary: #1A8FE3; /* Electric Blue */
+    --bodify-secondary: #00FF88; /* Neon Green */
+    --bodify-accent: #A15EFF; /* Soft Purple */
+    --bodify-purple: var(--bodify-accent);
+    --bodify-orange: var(--bodify-primary);
+    --bodify-dark: #0B0B0F; /* Almost Black */
+    --bodify-darker: #111320; /* Deep Navy */
+    --bodify-glow: rgba(26, 143, 227, 0.35);
   }
 }
 
@@ -68,10 +70,10 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(156, 77, 204, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(247, 156, 66, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(156, 77, 204, 0.08) 0%, transparent 50%),
-      linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #050510 100%);
+      radial-gradient(circle at 20% 80%, rgba(26, 143, 227, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(161, 94, 255, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0B0B0F 0%, #111320 100%);
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
@@ -189,10 +191,10 @@
 
   /* Enhanced button styling */
   .btn-primary {
-    background: linear-gradient(135deg, #9c4dcc 0%, #f79c42 100%);
-    border: 1px solid rgba(156, 77, 204, 0.3);
+    background: linear-gradient(135deg, var(--bodify-primary) 0%, var(--bodify-secondary) 100%);
+    border: 1px solid rgba(26, 143, 227, 0.35);
     box-shadow: 
-      0 4px 20px rgba(156, 77, 204, 0.3),
+      0 4px 20px rgba(26, 143, 227, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -220,15 +222,15 @@
 
   .btn-primary:hover {
     box-shadow: 
-      0 8px 30px rgba(156, 77, 204, 0.4),
+      0 8px 30px rgba(26, 143, 227, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 20px rgba(156, 77, 204, 0.3);
+      0 0 24px rgba(0, 255, 136, 0.35);
     transform: translateY(-2px);
   }
 
   /* Enhanced text gradients */
   .text-gradient {
-    background: linear-gradient(135deg, #9c4dcc 0%, #f79c42 100%);
+    background: linear-gradient(135deg, var(--bodify-primary) 0%, var(--bodify-secondary) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

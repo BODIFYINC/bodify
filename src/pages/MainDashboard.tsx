@@ -12,7 +12,7 @@ import Progress from './Progress';
 import Settings from './Settings';
 
 const MainDashboard: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('ai-coaching');
 
   const renderContent = () => {
     const contentVariants = {

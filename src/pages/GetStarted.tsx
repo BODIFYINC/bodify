@@ -101,8 +101,13 @@ const handleNext = async () => {
       height: parseInt(height),
       weight: parseInt(weight),
       goal,
-      isAdmin: email === 'bodify.inc@gmail.com'
+      isAdmin: false
     };
+
+    // Persist credentials for login (local-only)
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const nextUsers = [...users.filter((u: any) => u.email !== email), { email, password }];
+    localStorage.setItem('users', JSON.stringify(nextUsers));
     
     localStorage.setItem('currentUser', JSON.stringify(userData));
     localStorage.setItem('userSettings', JSON.stringify({
