@@ -116,13 +116,13 @@ const Navbar = () => {
             <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-[#232946]/80">
               <TikTokIcon />
             </a>
-            <Link to="/login">
-              <Button variant="outline" className="border-[#4f8cff] text-white hover:bg-[#232946] hover:text-white hover:border-[#a259ff] rounded-lg px-6">
-                Log in
-              </Button>
-            </Link>
+              <Link to="/login">
+                <Button variant="outline" className="rounded-lg px-6">
+                  Log in
+                </Button>
+              </Link>
             <Link to="/get-started">
-              <Button className="bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-white font-bold hover:opacity-90 transition-all duration-300 rounded-lg px-6 shadow-lg">
+              <Button className="btn-primary rounded-lg px-6 shadow-lg">
                 Get Started
               </Button>
             </Link>
