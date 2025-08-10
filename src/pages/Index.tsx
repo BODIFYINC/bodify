@@ -57,13 +57,13 @@ const Index = () => {
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-              <span className="text-transparent bg-clip-text bg-bodify-gradient-animated animate-gradient-shift">Transform</span>
+              <span className="text-transparent bg-clip-text bg-bodify-gradient-animated animate-gradient-shift">Bodify</span>
               <br />
-              <span className="text-white drop-shadow-lg">Your Body</span>
+              <span className="text-white drop-shadow-lg">your body</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Experience the future of fitness with <span className="font-bold text-transparent bg-clip-text bg-bodify-gradient-animated">AI-powered personalized coaching</span> that adapts to your unique goals, schedule, and preferences.
+              Experience the future of fitness with <span className="font-bold text-transparent bg-clip-text bg-bodify-gradient-animated">AI-powered personalized coaching</span> tailored to you. Slogan: <strong>Bodify your body</strong>.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
@@ -358,6 +358,112 @@ const Index = () => {
         </div>
       </section>
       
+      {/* AI Coach Preview */}
+      <section id="ai-coach" className="py-24 bg-gradient-to-b from-bodify-darker via-bodify-dark to-bodify-darker">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">Meet your 24/7 AI Coach</h2>
+              <p className="text-white/80 text-lg mb-6">Ask anything about training, nutrition, or recovery. Get concise, science-backed answers tailored to you.</p>
+              <ul className="space-y-3">
+                {[
+                  "Personalized daily tips and adjustments",
+                  "Instant form cues and workout swaps",
+                  "Nutrition answers based on your dislikes",
+                ].map((t, i) => (
+                  <li key={i} className="flex items-center">
+                    <span className="h-5 w-5 rounded-full bg-bodify-gradient mr-3" />
+                    <span className="text-white/90">{t}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <Button asChild className="btn-primary rounded-xl px-8 py-6">
+                  <Link to="/get-started">Try the AI Coach</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="glassmorphism rounded-2xl p-6 border-0">
+              <div className="space-y-4">
+                <div className="bg-background/40 rounded-xl p-4">
+                  <p className="text-sm text-white/70">You</p>
+                  <p className="text-white">What should I eat post-workout to maximize recovery?</p>
+                </div>
+                <div className="bg-background/60 rounded-xl p-4 border border-border">
+                  <p className="text-sm text-white/70">Bodify Coach</p>
+                  <p className="text-white/90">Aim for 0.3–0.5 g/kg protein + fast carbs within 60 min. Example: Greek yogurt bowl with berries and honey. Hydrate and add sodium if you sweat heavily.</p>
+                </div>
+                <div className="bg-background/40 rounded-xl p-4">
+                  <p className="text-sm text-white/70">You</p>
+                  <p className="text-white">I hate bananas. Alternatives?</p>
+                </div>
+                <div className="bg-background/60 rounded-xl p-4 border border-border">
+                  <p className="text-sm text-white/70">Bodify Coach</p>
+                  <p className="text-white/90">Swap bananas for berries, dates, or mango. Same carbs, better match for your preferences.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-24">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-white/70">Everything you need to know before getting started</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                q: "Is Bodify really personalized?",
+                a: "Yes. Workouts, nutrition, and tips adapt to your gender, age, height, activity, goal, and dislikes."
+              },
+              {
+                q: "How much does it cost?",
+                a: "Bodify Premium is $20/month. Cancel anytime."
+              },
+              {
+                q: "Do you support dietary restrictions?",
+                a: "Absolutely. We filter meals for allergies and dislikes and offer smart alternatives."
+              },
+              {
+                q: "Will I lose progress if I switch devices?",
+                a: "Your data syncs to your account once you sign in on all devices."
+              }
+            ].map((item, i) => (
+              <div key={i} className="glassmorphism rounded-2xl p-6 border-0">
+                <h3 className="text-xl font-bold mb-2">{item.q}</h3>
+                <p className="text-white/80">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About CTA */}
+      <section className="py-24 bg-bodify-dark/50">
+        <div className="container mx-auto px-6 max-w-6xl text-center">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">Built by athletes, powered by AI</h2>
+          <p className="text-white/80 max-w-3xl mx-auto mb-10">Learn more about our mission, team, and technology shaping the future of fitness coaching.</p>
+          <Button asChild variant="outline" className="px-8 py-6 rounded-xl">
+            <Link to="/about">Read our story</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Social band */}
+      <section className="py-12">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-white/70 mb-4">Follow our journey</p>
+          <div className="flex justify-center gap-6">
+            <a className="underline hover:opacity-80" href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer">tiktok.com/@bodify_inc</a>
+            <a className="underline hover:opacity-80" href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer">instagram.com/bodify.inc</a>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
