@@ -129,7 +129,7 @@ const handleNext = async () => {
 };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-bodify-dark to-bodify-darker text-white flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-bodify-dark to-bodify-darker text-foreground flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

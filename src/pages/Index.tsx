@@ -51,26 +51,26 @@ const Index = () => {
             className="text-center"
           >
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-black/90 font-semibold shadow-lg border border-white/20 text-sm mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-bodify-gradient text-black/90 font-semibold shadow-lg border border-white/20 text-sm mb-6">
                 🚀 AI-Powered Fitness Revolution
               </span>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] animate-gradient-move">Transform</span>
+              <span className="text-transparent bg-clip-text bg-bodify-gradient-animated animate-gradient-shift">Transform</span>
               <br />
               <span className="text-white drop-shadow-lg">Your Body</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Experience the future of fitness with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff]">AI-powered personalized coaching</span> that adapts to your unique goals, schedule, and preferences.
+              Experience the future of fitness with <span className="font-bold text-transparent bg-clip-text bg-bodify-gradient-animated">AI-powered personalized coaching</span> that adapts to your unique goals, schedule, and preferences.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-              <Button asChild className="btn-primary text-lg px-10 py-6 rounded-xl shadow-2xl bg-gradient-to-r from-[#232946] via-[#4f8cff] via-40% via-[#a259ff] to-[#ff5ecf] text-white font-bold border-0 hover:scale-105 hover:bg-gradient-to-r hover:from-[#ff8800] hover:via-[#ffe066] hover:via-30% hover:via-[#4f8cff] hover:via-60% hover:to-[#ff5ecf] hover:to-[#a259ff] transition-transform">
+              <Button asChild className="btn-primary text-lg px-10 py-6 rounded-xl shadow-2xl">
                 <Link to="/get-started">Start Your Journey</Link>
               </Button>
-              <Button asChild variant="outline" className="border-[#4f8cff] text-white hover:bg-[#232946] hover:text-white text-lg px-10 py-6 rounded-xl backdrop-blur-sm">
+              <Button asChild variant="outline" className="text-lg px-10 py-6 rounded-xl">
                 <a href="#features">Discover Features</a>
               </Button>
             </div>
@@ -90,7 +90,7 @@ const Index = () => {
                   transition={{ delay: 0.5 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff] text-transparent bg-clip-text mb-2 drop-shadow-lg">{stat.number}</div>
+                  <div className="text-3xl md:text-4xl font-bold bg-bodify-gradient text-transparent bg-clip-text mb-2 drop-shadow-lg">{stat.number}</div>
                   <div className="text-white/80 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
@@ -122,25 +122,25 @@ const Index = () => {
                 icon: Zap,
                 title: "AI Coach",
                 description: "24/7 intelligent coaching that learns and adapts to your progress.",
-                color: "bg-gradient-to-br from-[#a259ff] via-[#ff5ecf] to-[#ff8800]"
+                color: "bg-bodify-gradient"
               },
               {
                 icon: Target,
                 title: "Smart Training",
                 description: "Personalized workouts optimized for your goals and equipment.",
-                color: "bg-gradient-to-br from-[#4f8cff] via-[#ffe066] to-[#ff8800]"
+                color: "bg-gradient-to-br from-bodify-purple to-bodify-accent"
               },
               {
                 icon: Users,
                 title: "Custom Nutrition",
                 description: "Meal plans tailored to your dietary preferences and lifestyle.",
-                color: "bg-gradient-to-br from-[#ff5ecf] via-[#a259ff] to-[#4f8cff]"
+                color: "bg-gradient-to-br from-bodify-accent to-bodify-purple"
               },
               {
                 icon: Trophy,
                 title: "Real Results",
                 description: "Track progress with advanced analytics and insights.",
-                color: "bg-gradient-to-br from-[#ffe066] via-[#ff8800] to-[#a259ff]"
+                color: "bg-gradient-to-br from-bodify-purple to-cyan-400"
               }
             ].map((feature, index) => (
               <motion.div

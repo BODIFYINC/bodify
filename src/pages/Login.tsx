@@ -85,7 +85,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-bodify-dark to-bodify-darker text-white">
+    <div className="min-h-screen bg-gradient-to-b from-bodify-dark to-bodify-darker text-foreground">
       <Navbar />
       
       <div className="pt-32 pb-20">

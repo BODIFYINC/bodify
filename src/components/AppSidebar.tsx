@@ -76,24 +76,24 @@ const menuItems = [
 
 export function AppSidebar({ activeTab, onTabChange }: AppSidebarProps) {
   return (
-    <Sidebar className="border-r border-white/10 bg-gradient-to-b from-bodify-dark to-bodify-darker">
+    <Sidebar className="border-r border-border bg-sidebar text-sidebar-foreground sidebar-premium">
       <SidebarHeader className="p-6">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-bodify-gradient rounded-lg flex items-center justify-center">
             <User className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-bold bg-gradient-to-r from-bodify-orange to-bodify-purple bg-clip-text text-transparent">
+            <h2 className="text-lg font-bold bg-clip-text text-transparent bg-bodify-gradient">
               Bodify
             </h2>
-            <p className="text-xs text-white/60">Fitness Dashboard</p>
+            <p className="text-xs text-foreground/70">Fitness Dashboard</p>
           </div>
         </div>
       </SidebarHeader>
 
       <SidebarContent className="px-4">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-white/70 font-medium mb-2">
+          <SidebarGroupLabel className="text-foreground/70 font-medium mb-2">
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -108,15 +108,15 @@ export function AppSidebar({ activeTab, onTabChange }: AppSidebarProps) {
                         relative w-full p-3 rounded-lg transition-all duration-200 group text-left
                         ${isActive 
                           ? 'bg-bodify-gradient text-white shadow-lg' 
-                          : 'text-white hover:text-white hover:bg-white/10'
+                          : 'text-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
                         }
                       `}
                     >
                       <div className="flex items-center space-x-3 w-full">
-                        <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-white'}`} />
+                        <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-foreground'}`} />
                         <div className="flex-1 text-left overflow-hidden">
                           <div className="font-medium text-base tracking-wide truncate">{item.title}</div>
-                          <div className={`text-xs ${isActive ? 'text-white/90' : 'text-white/85'} truncate`}>
+                          <div className={`text-xs ${isActive ? 'text-white/90' : 'text-foreground/80'} truncate`}>
                             {item.description}
                           </div>
                         </div>
@@ -139,7 +139,7 @@ export function AppSidebar({ activeTab, onTabChange }: AppSidebarProps) {
       </SidebarContent>
 
       <SidebarFooter className="p-4">
-        <div className="text-center text-xs text-white/50">
+        <div className="text-center text-xs text-foreground/60">
           <p>© 2024 Bodify</p>
           <p>Your AI Fitness Companion</p>
         </div>
