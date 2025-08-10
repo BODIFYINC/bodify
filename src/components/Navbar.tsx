@@ -35,8 +35,8 @@ const Navbar = () => {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b-4 border-transparent",
-      isScrolled ? "bg-black/90 backdrop-blur-lg py-3 shadow-2xl border-b-4 border-gradient-to-r from-[#ff8800] via-[#ffe066] via-30% via-[#4f8cff] via-60% via-[#ff5ecf] to-[#a259ff]" : "bg-transparent py-5 border-b-4 border-transparent"
+      "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
+      isScrolled ? "bg-black/90 backdrop-blur-lg py-3 shadow-2xl border-border" : "bg-transparent py-5 border-transparent"
     )}>
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center">

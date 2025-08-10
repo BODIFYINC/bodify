@@ -99,12 +99,12 @@ const Login = () => {
             >
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-2">Welcome Back</h2>
-                <p className="text-white/70">Sign in to continue your fitness journey</p>
+                <p className="text-foreground/70">Sign in to continue your fitness journey</p>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="email" className="text-white mb-2 block">Email Address</Label>
+                  <Label htmlFor="email" className="text-foreground mb-2 block">Email Address</Label>
                   <Input 
                     id="email" 
                     name="email" 
@@ -112,13 +112,13 @@ const Login = () => {
                     placeholder="you@example.com" 
                     value={formData.email} 
                     onChange={handleChange} 
-                    className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-12 rounded-xl focus:border-bodify-orange" 
+                    className="bg-background/20 border-border text-foreground placeholder:text-foreground/60 h-12 rounded-xl focus:border-primary"
                   />
                 </div>
                 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <Label htmlFor="password" className="text-white">Password</Label>
+                    <Label htmlFor="password" className="text-foreground">Password</Label>
                     <Link to="/forgot-password" className="text-bodify-orange text-sm hover:underline">
                       Forgot password?
                     </Link>
@@ -130,7 +130,7 @@ const Login = () => {
                     placeholder="••••••••" 
                     value={formData.password} 
                     onChange={handleChange} 
-                    className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-12 rounded-xl focus:border-bodify-orange" 
+                    className="bg-background/20 border-border text-foreground placeholder:text-foreground/60 h-12 rounded-xl focus:border-primary"
                   />
                 </div>
                 
@@ -140,7 +140,7 @@ const Login = () => {
               </form>
               
               <div className="mt-8 text-center">
-                <p className="text-white/70">
+                <p className="text-foreground/70">
                   Don't have an account? <Link to="/get-started" className="text-bodify-orange hover:underline font-medium">Get Started</Link>
                 </p>
               </div>
