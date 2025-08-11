@@ -7,6 +7,13 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Immersive3D from '@/sections/home/Immersive3D';
+import VoiceUIDemo from '@/sections/home/VoiceUIDemo';
+import TrendsShowcase from '@/sections/home/TrendsShowcase';
+import SustainabilitySection from '@/sections/home/SustainabilitySection';
+import AccessibilitySection from '@/sections/home/AccessibilitySection';
+import ClaymorphismFeatures from '@/sections/home/ClaymorphismFeatures';
+import NeobrutalismBand from '@/sections/home/NeobrutalismBand';
 
 const Index = () => {
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -463,6 +470,14 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <TrendsShowcase />
+      <Immersive3D />
+      <ClaymorphismFeatures />
+      <NeobrutalismBand />
+      <VoiceUIDemo />
+      <SustainabilitySection />
+      <AccessibilitySection />
 
       <Footer />
     </div>
