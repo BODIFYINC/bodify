@@ -14,6 +14,12 @@ import SustainabilitySection from '@/sections/home/SustainabilitySection';
 import AccessibilitySection from '@/sections/home/AccessibilitySection';
 import ClaymorphismFeatures from '@/sections/home/ClaymorphismFeatures';
 import NeobrutalismBand from '@/sections/home/NeobrutalismBand';
+import AIPreviewBento from '@/sections/home/AIPreviewBento';
+import ParallaxShowcase from '@/sections/home/ParallaxShowcase';
+import HowItWorksScroller from '@/sections/home/HowItWorksScroller';
+import BiometricsStrip from '@/sections/home/BiometricsStrip';
+import BrandPaletteBand from '@/sections/home/BrandPaletteBand';
+import FinalCTA from '@/sections/home/FinalCTA';
 
 const Index = () => {
   const testimonialsRef = useRef<HTMLDivElement>(null);
