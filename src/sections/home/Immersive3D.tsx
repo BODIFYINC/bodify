@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import BodifyLogo from '@/components/BodifyLogo';
+import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 export default function Immersive3D() {
   return (
@@ -43,16 +43,23 @@ export default function Immersive3D() {
             }}
           />
 
-          {/* Logo */}
-          <motion.div
+          {/* Logo image showcase */}
+          <motion.figure
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center"
           >
-            <BodifyLogo className="h-16 md:h-20 w-auto" />
-            <p className="mt-3 text-white/70">Your body, your plan — powered by AI</p>
-          </motion.div>
+            <motion.img
+              src={bodifyLogo}
+              alt="Bodify AI fitness brand logo"
+              className="h-16 md:h-20 w-auto"
+              loading="eager"
+              decoding="async"
+              whileHover={{ scale: 1.03 }}
+            />
+            <figcaption className="mt-3 text-white/70">Your body, your plan — powered by AI</figcaption>
+          </motion.figure>
         </div>
       </div>
     </section>
