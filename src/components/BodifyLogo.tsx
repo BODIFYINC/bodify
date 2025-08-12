@@ -1,15 +1,20 @@
-
 import React from 'react';
+import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 interface LogoProps {
   className?: string;
+  alt?: string;
 }
 
-const BodifyLogo: React.FC<LogoProps> = ({ className = "h-8 w-auto" }) => {
+const BodifyLogo: React.FC<LogoProps> = ({ className = "h-8 w-auto", alt = "Bodify logo" }) => {
   return (
-    <div className={`flex items-center ${className}`}>
-      <div className="font-bold text-transparent bg-clip-text bg-bodify-gradient text-2xl">BODIFY</div>
-    </div>
+    <img
+      src={bodifyLogo}
+      alt={alt}
+      className={className}
+      loading="eager"
+      decoding="async"
+    />
   );
 };
 
