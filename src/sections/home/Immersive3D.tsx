@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import bodifyLogo from '@/assets/bodify-logo-primary.webp';
+import BodifyLogo from '@/components/BodifyLogo';
 
 export default function Immersive3D() {
   return (
@@ -50,14 +50,9 @@ export default function Immersive3D() {
             transition={{ duration: 0.5 }}
             className="relative z-10 text-center"
           >
-            <motion.img
-              src={bodifyLogo}
-              alt="Bodify AI fitness brand logo"
-              className="h-16 md:h-20 w-auto"
-              loading="eager"
-              decoding="async"
-              whileHover={{ scale: 1.03 }}
-            />
+            <motion.div whileHover={{ scale: 1.03 }}>
+              <BodifyLogo className="h-16 md:h-20 w-auto" alt="Bodify AI fitness logo" />
+            </motion.div>
             <figcaption className="mt-3 text-white/70">Your body, your plan — powered by AI</figcaption>
           </motion.figure>
         </div>
