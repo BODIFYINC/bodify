@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Zap, Target, Users, Trophy } from 'lucide-react';
@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Switch } from '@/components/ui/switch';
 import Immersive3D from '@/sections/home/Immersive3D';
 import VoiceUIDemo from '@/sections/home/VoiceUIDemo';
 import TrendsShowcase from '@/sections/home/TrendsShowcase';
@@ -23,7 +24,7 @@ import FinalCTA from '@/sections/home/FinalCTA';
 
 const Index = () => {
   const testimonialsRef = useRef<HTMLDivElement>(null);
-
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   useEffect(() => {
     if (testimonialsRef.current) {
       const cards = testimonialsRef.current.querySelectorAll('.testimonial-card');
@@ -251,23 +252,49 @@ const Index = () => {
             <Card className="glassmorphism overflow-hidden border-0 rounded-3xl">
               <div className="relative">
                 <div className="absolute top-0 left-0 right-0 h-2 bg-bodify-gradient"></div>
-                <div className="bg-gradient-to-br from-bodify-purple/20 to-bodify-orange/20 p-8 text-center">
-                  <div className="inline-block px-4 py-2 rounded-full bg-bodify-gradient text-white text-sm font-bold mb-4">
+                <div className="bg-gradient-to-br from-bodify-purple/20 to-bodify-orange/20 p-8 text-center animate-enter">
+                  <div className="inline-block px-4 py-2 rounded-full bg-bodify-gradient text-white text-sm font-bold mb-4 hover-scale">
                     LIMITED TIME OFFER
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Premium Access</h3>
-                  <div className="flex items-center justify-center gap-3 mb-6">
-                    <span className="text-white/70 text-2xl line-through">$49.99</span>
-                    <span className="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">60% OFF</span>
+                  <h3 className="text-3xl font-bold text-white mb-4 kinetic-typography">Premium Access</h3>
+
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    {billingCycle === 'yearly' ? (
+                      <span className="px-3 py-1 rounded-full bg-bodify-gradient text-xs font-bold">Best value</span>
+                    ) : (
+                      <>
+                        <span className="text-white/70 text-2xl line-through">$49.99</span>
+                        <span className="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">60% OFF</span>
+                      </>
+                    )}
                   </div>
-                  <div className="flex items-center justify-center mb-6">
+
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <span className={billingCycle === 'monthly' ? 'text-white text-sm' : 'text-white/60 text-sm'}>Monthly</span>
+                    <Switch
+                      checked={billingCycle === 'yearly'}
+                      onCheckedChange={(v) => setBillingCycle(v ? 'yearly' : 'monthly')}
+                      aria-label="Toggle yearly billing"
+                    />
+                    <span className={billingCycle === 'yearly' ? 'text-white text-sm' : 'text-white/60 text-sm'}>
+                      Yearly <span className="ml-1 px-2 py-0.5 rounded-full bg-bodify-gradient text-[10px] font-bold">2 months free</span>
+                    </span>
+                  </div>
+
+                  <motion.div
+                    key={billingCycle}
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex items-center justify-center mb-6"
+                  >
                     <span className="text-4xl font-semibold text-white">$</span>
-                    <span className="text-7xl font-bold text-white">20</span>
+                    <span className="text-7xl font-bold text-white">{billingCycle === 'yearly' ? '200' : '20'}</span>
                     <div className="flex flex-col items-start ml-2">
                       <span className="text-white text-2xl">.00</span>
-                      <span className="text-white/90 text-lg">per month</span>
+                      <span className="text-white/90 text-lg">{billingCycle === 'yearly' ? 'per year' : 'per month'}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 
                 <div className="p-8">
