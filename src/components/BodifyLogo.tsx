@@ -15,45 +15,59 @@ const BodifyLogo: React.FC<LogoProps> = ({
 }) => {
   const CircleMark = () => (
     <g>
-      {/* Outer circle */}
+      {/* Outer ring with rotation */}
       <circle 
         cx="35" 
         cy="35" 
         r="30" 
         fill="none" 
         stroke="url(#bodifyGradient)" 
-        strokeWidth="3"
+        strokeWidth="2"
+        opacity="0.3"
       />
       
-      {/* Inner fitness icon - stylized strong person */}
-      <g transform="translate(25, 22)">
-        {/* Head */}
-        <circle cx="10" cy="6" r="4" fill="url(#bodifyGradient)" />
-        
-        {/* Body - strong shoulders */}
+      {/* Inner fitness symbol - Strong 'B' for Bodify */}
+      <g transform="translate(25, 20)">
+        {/* Main B structure */}
         <path 
-          d="M6 12 Q10 10 14 12 L16 20 Q10 18 4 20 Z" 
-          fill="url(#bodifyGradient)"
+          d="M5 5 L5 25 M5 5 L15 5 Q18 5 18 10 Q18 15 15 15 L5 15 M5 15 L16 15 Q20 15 20 20 Q20 25 16 25 L5 25" 
+          stroke="url(#bodifyGradient)" 
+          strokeWidth="3" 
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         
-        {/* Arms - flexed */}
-        <ellipse cx="3" cy="16" rx="2" ry="4" fill="url(#bodifyGradient)" />
-        <ellipse cx="17" cy="16" rx="2" ry="4" fill="url(#bodifyGradient)" />
-        
-        {/* Legs */}
-        <rect x="8" y="20" width="1.5" height="6" fill="url(#bodifyGradient)" />
-        <rect x="10.5" y="20" width="1.5" height="6" fill="url(#bodifyGradient)" />
+        {/* Muscle definition lines */}
+        <path 
+          d="M7 8 L13 8 M7 12 L13 12 M7 18 L14 18 M7 22 L14 22" 
+          stroke="url(#bodifyGradient)" 
+          strokeWidth="1" 
+          opacity="0.6"
+          strokeLinecap="round"
+        />
       </g>
       
-      {/* AI enhancement dots */}
-      <circle cx="50" cy="25" r="1.5" fill="url(#bodifyGradient)" opacity="0.8">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+      {/* Energy rings */}
+      <circle cx="35" cy="35" r="25" fill="none" stroke="url(#bodifyGradient)" strokeWidth="1" opacity="0.4">
+        <animate attributeName="r" values="25;27;25" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" />
       </circle>
-      <circle cx="20" cy="45" r="1.5" fill="url(#bodifyGradient)" opacity="0.8">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.7s" />
+      
+      <circle cx="35" cy="35" r="35" fill="none" stroke="url(#bodifyGradient)" strokeWidth="1" opacity="0.2">
+        <animate attributeName="r" values="35;38;35" dur="4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite" />
       </circle>
-      <circle cx="50" cy="45" r="1.5" fill="url(#bodifyGradient)" opacity="0.8">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1.4s" />
+      
+      {/* Power dots */}
+      <circle cx="50" cy="25" r="1.5" fill="url(#bodifyGradient)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="20" cy="45" r="1.5" fill="url(#bodifyGradient)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.7s" />
+      </circle>
+      <circle cx="50" cy="45" r="1.5" fill="url(#bodifyGradient)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.4s" />
       </circle>
     </g>
   );
@@ -85,6 +99,7 @@ const BodifyLogo: React.FC<LogoProps> = ({
       <defs>
         <linearGradient id="bodifyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(var(--primary))" />
+          <stop offset="50%" stopColor="hsl(var(--secondary))" />
           <stop offset="100%" stopColor="hsl(var(--accent))" />
         </linearGradient>
       </defs>

@@ -16,16 +16,16 @@
     --popover: 220 13% 11%;
     --popover-foreground: 220 9% 98%;
 
-    --primary: 271 62% 55%;
+    --primary: 207 100% 63%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 32 92% 61%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 134 100% 50%;
+    --secondary-foreground: 220 13% 9%;
 
     --muted: 220 13% 15%;
     --muted-foreground: 220 9% 60%;
 
-    --accent: 220 13% 15%;
+    --accent: 170 100% 40%;
     --accent-foreground: 220 9% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -33,28 +33,26 @@
 
     --border: 220 13% 18%;
     --input: 220 13% 18%;
-    --ring: 271 62% 55%;
+    --ring: 207 100% 63%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 220 13% 9%;
     --sidebar-foreground: 220 9% 98%;
-    --sidebar-primary: 271 62% 55%;
+    --sidebar-primary: 207 100% 63%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 220 13% 15%;
     --sidebar-accent-foreground: 220 9% 98%;
     --sidebar-border: 220 13% 18%;
-    --sidebar-ring: 271 62% 55%;
+    --sidebar-ring: 207 100% 63%;
 
-    /* Bodify Brand Tokens (updated) */
-    --bodify-primary: #1A8FE3; /* Electric Blue */
-    --bodify-secondary: #00FF88; /* Neon Green */
-    --bodify-accent: #A15EFF; /* Soft Purple */
-    --bodify-purple: var(--bodify-accent);
-    --bodify-orange: var(--bodify-primary);
-    --bodify-dark: #0B0B0F; /* Almost Black */
-    --bodify-darker: #111320; /* Deep Navy */
-    --bodify-glow: rgba(26, 143, 227, 0.35);
+    /* Bodify Brand Tokens - Blue & Green Theme */
+    --bodify-primary: 207 100% 63%; /* Electric Blue */
+    --bodify-secondary: 134 100% 50%; /* Vibrant Green */
+    --bodify-accent: 170 100% 40%; /* Teal Green */
+    --bodify-dark: 220 20% 6%; /* Almost Black */
+    --bodify-darker: 220 25% 10%; /* Deep Navy */
+    --bodify-glow: rgba(52, 152, 219, 0.35);
   }
 }
 
@@ -71,10 +69,10 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(26, 143, 227, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.12) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(161, 94, 255, 0.08) 0%, transparent 50%),
-      linear-gradient(135deg, #0B0B0F 0%, #111320 100%);
+      radial-gradient(circle at 40% 40%, rgba(0, 200, 136, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(var(--bodify-dark)) 0%, hsl(var(--bodify-darker)) 100%);
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;

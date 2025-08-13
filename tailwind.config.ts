@@ -64,12 +64,12 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bodify: {
-					purple: '#A15EFF',
-					orange: '#1A8FE3',
-					dark: '#0B0B0F',
-					darker: '#111320',
-					accent: '#00FF88',
-					light: '#D6D6E0',
+					blue: '#3498db',
+					green: '#00ff88',
+					teal: '#00cc88',
+					dark: '#0f1419',
+					darker: '#1a2332',
+					light: '#d6d6e0',
 				},
 			},
 			borderRadius: {
@@ -155,8 +155,8 @@ export default {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'hero-pattern': "url('/hero-pattern.svg')",
-				'bodify-gradient': 'linear-gradient(135deg, #1A8FE3 0%, #00FF88 100%)',
-				'bodify-gradient-animated': 'linear-gradient(-45deg, #1A8FE3, #00FF88, #A15EFF, #22D3EE)'
+				'bodify-gradient': 'linear-gradient(135deg, #3498db 0%, #00ff88 100%)',
+				'bodify-gradient-animated': 'linear-gradient(-45deg, #3498db, #00ff88, #00cc88, #22d3ee)'
 			},
 			backdropBlur: {
 				'xs': '2px',

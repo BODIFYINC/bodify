@@ -10,6 +10,10 @@ import { Card } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import HeroSection from '@/sections/home/LogoShowcase';
 import FeaturesSection from '@/sections/home/Immersive3D';
+import StatsSection from '@/sections/home/StatsSection';
+import TestimonialsSection from '@/sections/home/TestimonialsSection';
+import TechSection from '@/sections/home/TechSection';
+import CTASection from '@/sections/home/CTASection';
 import FinalCTA from '@/sections/home/FinalCTA';
 
 const Index = () => {
@@ -36,8 +40,20 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
       
+      {/* Stats Section */}
+      <StatsSection />
+      
       {/* Features Section */}
       <FeaturesSection />
+      
+      {/* Technology Section */}
+      <TechSection />
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* CTA Section */}
+      <CTASection />
 
       {/* Pricing Section */}
       <section className="py-24 bg-muted/20">
