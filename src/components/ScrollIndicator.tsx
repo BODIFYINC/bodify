@@ -102,18 +102,28 @@ const ScrollIndicator: React.FC = () => {
         />
         
         <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 w-7 h-7 bg-gradient-to-br from-primary to-secondary rounded-full border-3 border-background shadow-2xl cursor-grab active:cursor-grabbing z-20"
+          className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full border-4 border-white shadow-2xl cursor-grab active:cursor-grabbing z-50"
           style={{ 
-            bottom: `calc(${scrollProgress}% - 14px)`,
-            boxShadow: `0 0 25px rgba(52, 152, 219, ${isDragging ? 0.9 : 0.6}), inset 0 0 10px rgba(255, 255, 255, 0.2)`
+            bottom: `calc(${scrollProgress}% - 16px)`,
+            boxShadow: `0 0 30px hsl(var(--primary) / ${isDragging ? 0.9 : 0.7}), inset 0 0 15px rgba(255, 255, 255, 0.3)`
           }}
-          whileHover={{ scale: 1.3, boxShadow: "0 0 35px rgba(52, 152, 219, 0.8)" }}
+          whileHover={{ 
+            scale: 1.4, 
+            boxShadow: "0 0 40px hsl(var(--primary) / 0.9)",
+            rotate: [0, 10, -10, 0]
+          }}
           whileTap={{ scale: 0.9 }}
           animate={{ 
-            scale: isDragging ? 1.2 : 1,
-            opacity: 1
+            scale: isDragging ? 1.3 : 1.1,
+            opacity: 1,
+            rotate: isDragging ? [0, 360] : 0
           }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 20,
+            rotate: { duration: isDragging ? 1 : 0, repeat: isDragging ? Infinity : 0 }
+          }}
         />
       </div>
 

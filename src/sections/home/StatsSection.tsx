@@ -126,11 +126,15 @@ export default function StatsSection() {
                       <CountUp 
                         start={0}
                         end={stat.number === "24/7" ? 24 : parseInt(stat.number.replace(/[^\d]/g, ''))} 
-                        duration={3}
-                        delay={index * 0.2}
+                        duration={4}
+                        delay={index * 0.3}
                         suffix={stat.number === "24/7" ? "/7" : stat.number.replace(/[\d]/g, '')}
                         useEasing={true}
                         preserveValue={true}
+                        formattingFn={(value) => {
+                          const suffix = stat.number === "24/7" ? "/7" : stat.number.replace(/[\d]/g, '');
+                          return `${Math.round(value)}${suffix}`;
+                        }}
                       />
                     </motion.span>
                   </motion.span>

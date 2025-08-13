@@ -41,7 +41,19 @@ const Navbar = () => {
     )}>
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center group">
-          <BodifyLogo className="h-10 w-auto" variant="full" />
+          <motion.div
+            whileHover={{ 
+              scale: 1.05,
+              rotate: [0, -2, 2, 0],
+              y: [0, -2, 0]
+            }}
+            transition={{ 
+              duration: 0.6,
+              ease: "easeInOut"
+            }}
+          >
+            <BodifyLogo className="h-10 w-auto" variant="full" />
+          </motion.div>
         </Link>
 
         <div className="hidden md:flex items-center space-x-1">

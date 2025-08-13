@@ -48,12 +48,46 @@ export default function HeroSection() {
         <div className="text-center">
           {/* Static Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              y: 0,
+              rotate: [0, 1, -1, 0]
+            }}
+            transition={{ 
+              duration: 1.2, 
+              ease: "easeOut",
+              rotate: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
+            whileHover={{
+              scale: 1.1,
+              rotate: [0, 5, -5, 0],
+              filter: "drop-shadow(0 0 20px hsl(var(--primary) / 0.5))"
+            }}
+            className="mb-8 cursor-pointer"
           >
-            <BodifyLogo className="h-16 w-auto mx-auto filter drop-shadow-lg" variant="full" />
+            <motion.div
+              animate={{
+                y: [0, -8, 0],
+                filter: [
+                  "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))",
+                  "drop-shadow(0 15px 25px hsl(var(--primary) / 0.5))",
+                  "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))"
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <BodifyLogo className="h-16 w-auto mx-auto" variant="full" />
+            </motion.div>
           </motion.div>
 
           {/* Hero headline */}
