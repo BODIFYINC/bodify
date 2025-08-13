@@ -41,10 +41,7 @@ const Navbar = () => {
     )}>
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link to="/" className="flex items-center group">
-          <BodifyLogo 
-            className="h-10 w-auto transition-all duration-300" 
-            variant="full"
-          />
+          <BodifyLogo className="h-10 w-auto" variant="full" />
         </Link>
 
         <div className="hidden md:flex items-center space-x-1">

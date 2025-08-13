@@ -96,59 +96,154 @@ export default function StatsSection() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.2, type: "spring", bounce: 0.3 }}
                   viewport={{ once: true }}
-                  className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative z-10"
+                  className="text-4xl md:text-5xl font-bold text-gradient mb-2 relative z-10"
                 >
                   <motion.span 
                     className="relative z-10 inline-block"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    whileHover={{ 
+                      scale: 1.15,
+                      rotate: [0, -5, 5, 0],
+                      textShadow: "0 0 30px rgba(52, 152, 219, 0.8)"
+                    }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 400, 
+                      damping: 10,
+                      rotate: { duration: 0.6, ease: "easeInOut" }
+                    }}
                   >
-                    <CountUp 
-                      end={stat.number === "24/7" ? 24 : parseInt(stat.number.replace(/[^\d]/g, ''))} 
-                      duration={2.5}
-                      delay={index * 0.3}
-                      suffix={stat.number === "24/7" ? "/7" : stat.number.replace(/[\d]/g, '')}
-                    />
+                    <motion.span
+                      animate={{
+                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="bg-gradient-to-r from-primary via-secondary via-accent to-primary bg-[length:200%_100%] bg-clip-text text-transparent"
+                    >
+                      <CountUp 
+                        start={0}
+                        end={stat.number === "24/7" ? 24 : parseInt(stat.number.replace(/[^\d]/g, ''))} 
+                        duration={3}
+                        delay={index * 0.2}
+                        suffix={stat.number === "24/7" ? "/7" : stat.number.replace(/[\d]/g, '')}
+                        useEasing={true}
+                        preserveValue={true}
+                      />
+                    </motion.span>
                   </motion.span>
                   
-                  {/* Dynamic background glow */}
+                  {/* Enhanced dynamic background glow with number animation */}
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
                     viewport={{ once: true }}
-                    className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-lg -z-10"
+                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-xl -z-10"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.3, 0.6, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.5
+                    }}
                   />
                   
-                  {/* Pulsing animation effect */}
+                  {/* Multiple pulsing layers */}
                   <motion.div
                     animate={{ 
-                      opacity: [0, 0.6, 0],
-                      scale: [0.8, 1.2, 0.8]
-                    }}
-                    transition={{ 
-                      duration: 3, 
-                      repeat: Infinity, 
-                      delay: index * 0.7,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-md"
-                  />
-                  
-                  {/* Sparkle effects */}
-                  <motion.div
-                    animate={{ 
-                      rotate: [0, 360],
-                      scale: [0, 1, 0]
+                      opacity: [0, 0.8, 0],
+                      scale: [0.8, 1.3, 0.8],
+                      rotate: [0, 180, 360]
                     }}
                     transition={{ 
                       duration: 4, 
                       repeat: Infinity, 
-                      delay: index * 0.5 + 1,
+                      delay: index * 0.3,
                       ease: "easeInOut"
                     }}
-                    className="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"
+                    className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-lg -z-10"
                   />
+                  
+                  {/* Counter-rotating effect */}
+                  <motion.div
+                    animate={{ 
+                      rotate: [360, 0],
+                      scale: [1, 1.2, 1]
+                    }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      delay: index * 0.4,
+                      ease: "linear"
+                    }}
+                    className="absolute inset-0 bg-gradient-to-r from-accent/15 to-primary/15 rounded-lg blur-md -z-10"
+                  />
+                  
+                  {/* Enhanced sparkle effects */}
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [0, 1.5, 0],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      delay: index * 0.2 + 0.5,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full shadow-lg shadow-primary/50"
+                  />
+                  <motion.div
+                    animate={{ 
+                      rotate: [360, 0],
+                      scale: [0, 1.2, 0],
+                      opacity: [0, 0.8, 0]
+                    }}
+                    transition={{ 
+                      duration: 2.5, 
+                      repeat: Infinity, 
+                      delay: index * 0.3 + 1,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute bottom-1 left-1 w-2 h-2 bg-secondary rounded-full shadow-lg shadow-secondary/50"
+                  />
+                  
+                  {/* Orbiting particles */}
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360]
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: index * 0.5
+                    }}
+                    className="absolute inset-0 -z-10"
+                  >
+                    <div className="absolute top-2 left-1/2 w-1.5 h-1.5 bg-accent rounded-full shadow-glow" />
+                  </motion.div>
+                  <motion.div
+                    animate={{
+                      rotate: [360, 0]
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: index * 0.3 + 2
+                    }}
+                    className="absolute inset-0 -z-10"
+                  >
+                    <div className="absolute bottom-2 right-1/4 w-1 h-1 bg-primary rounded-full shadow-glow" />
+                  </motion.div>
                 </motion.div>
                 
                 {/* Label */}

@@ -85,7 +85,7 @@ const ScrollIndicator: React.FC = () => {
 
       <div 
         ref={progressRef}
-        className="relative w-3 h-48 bg-background/20 backdrop-blur-md border border-primary/30 rounded-full overflow-hidden cursor-pointer hover:w-4 hover:border-primary/50 transition-all duration-300 shadow-lg shadow-primary/20"
+        className="relative w-4 h-48 bg-background/10 backdrop-blur-md border-2 border-primary/40 rounded-full overflow-visible cursor-pointer hover:w-5 hover:border-primary/60 transition-all duration-300 shadow-2xl shadow-primary/30"
         onMouseDown={handleMouseDown}
         onClick={handleProgressClick}
       >
@@ -102,17 +102,18 @@ const ScrollIndicator: React.FC = () => {
         />
         
         <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-primary to-secondary rounded-full border-2 border-background/50 shadow-xl cursor-grab active:cursor-grabbing"
+          className="absolute left-1/2 transform -translate-x-1/2 w-7 h-7 bg-gradient-to-br from-primary to-secondary rounded-full border-3 border-background shadow-2xl cursor-grab active:cursor-grabbing z-20"
           style={{ 
-            bottom: `calc(${scrollProgress}% - 12px)`,
-            boxShadow: `0 0 20px rgba(52, 152, 219, ${isDragging ? 0.8 : 0.4})`
+            bottom: `calc(${scrollProgress}% - 14px)`,
+            boxShadow: `0 0 25px rgba(52, 152, 219, ${isDragging ? 0.9 : 0.6}), inset 0 0 10px rgba(255, 255, 255, 0.2)`
           }}
-          whileHover={{ scale: 1.2 }}
+          whileHover={{ scale: 1.3, boxShadow: "0 0 35px rgba(52, 152, 219, 0.8)" }}
           whileTap={{ scale: 0.9 }}
           animate={{ 
-            scale: isDragging ? 1.1 : 1,
-            boxShadow: isDragging ? "0 0 30px rgba(52, 152, 219, 0.8)" : "0 0 15px rgba(52, 152, 219, 0.4)"
+            scale: isDragging ? 1.2 : 1,
+            opacity: 1
           }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         />
       </div>
 
