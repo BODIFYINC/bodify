@@ -139,7 +139,6 @@ export default function StatsSection() {
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
                     viewport={{ once: true }}
                     className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-xl -z-10"
                     animate={{
