@@ -53,11 +53,18 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="mb-8"
           >
-            <img 
-              src="/src/assets/bodify-logo-static.png" 
-              alt="Bodify - AI Fitness Platform" 
-              className="h-16 w-auto mx-auto"
-            />
+            <motion.div
+              whileHover={{ 
+                scale: 1.05, 
+                rotate: [0, -1, 1, 0],
+              }}
+              transition={{ 
+                duration: 0.6,
+                rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              <BodifyLogo className="h-16 w-auto mx-auto filter drop-shadow-lg" variant="full" />
+            </motion.div>
           </motion.div>
 
           {/* Hero headline */}

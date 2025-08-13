@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Instagram } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -39,11 +40,10 @@ const Navbar = () => {
       isScrolled ? "bg-black/90 backdrop-blur-lg py-3 shadow-2xl border-border" : "bg-transparent py-5 border-transparent"
     )}>
       <div className="container mx-auto flex items-center justify-between px-6">
-        <Link to="/" className="flex items-center">
-          <img 
-            src="/src/assets/bodify-logo-static.png" 
-            alt="Bodify - AI Fitness Platform" 
-            className="h-10 w-auto"
+        <Link to="/" className="flex items-center group">
+          <BodifyLogo 
+            className="h-10 w-auto transition-all duration-300" 
+            variant="full"
           />
         </Link>
 

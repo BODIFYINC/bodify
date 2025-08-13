@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 
 const ScrollIndicator: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
 
@@ -14,134 +13,123 @@ const ScrollIndicator: React.FC = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min((window.scrollY / totalHeight) * 100, 100);
       setScrollProgress(progress);
-      setIsVisible(true);
     };
 
-    // Initial call
     handleScroll();
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-  };
-
-  const handleProgressClick = (e: React.MouseEvent) => {
-    if (!progressRef.current) return;
-    
-    const rect = progressRef.current.getBoundingClientRect();
-    const clickY = e.clientY - rect.top;
-    const percentage = Math.max(0, Math.min(100, (1 - clickY / rect.height) * 100));
-    
+  const scrollToPosition = (percentage: number) => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollTo = (percentage / 100) * totalHeight;
-    
     window.scrollTo({ top: scrollTo, behavior: 'smooth' });
   };
 
+  const scrollToTop = () => scrollToPosition(0);
+  const scrollToBottom = () => scrollToPosition(100);
+
+  const handleProgressClick = (e: React.MouseEvent) => {
+    if (!progressRef.current) return;
+    const rect = progressRef.current.getBoundingClientRect();
+    const clickY = e.clientY - rect.top;
+    const percentage = Math.max(0, Math.min(100, (1 - clickY / rect.height) * 100));
+    scrollToPosition(percentage);
+  };
+
   const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
     setIsDragging(true);
     handleProgressClick(e);
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging || !progressRef.current) return;
-    
-    const rect = progressRef.current.getBoundingClientRect();
-    const clickY = e.clientY - rect.top;
-    const percentage = Math.max(0, Math.min(100, (1 - clickY / rect.height) * 100));
-    
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollTo = (percentage / 100) * totalHeight;
-    
-    window.scrollTo({ top: scrollTo });
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging || !progressRef.current) return;
+      const rect = progressRef.current.getBoundingClientRect();
+      const clickY = e.clientY - rect.top;
+      const percentage = Math.max(0, Math.min(100, (1 - clickY / rect.height) * 100));
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({ top: (percentage / 100) * totalHeight });
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
-      };
+      document.body.style.userSelect = 'none';
     }
-  }, [isDragging]);
 
-  if (!isVisible) return null;
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+    };
+  }, [isDragging]);
 
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center gap-4"
+      className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center gap-3"
     >
-      {/* Scroll Up Button */}
       <Button
         onClick={scrollToTop}
         size="sm"
         variant="outline"
-        className="w-12 h-12 rounded-full bg-primary/10 backdrop-blur-sm border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+        className="w-10 h-10 rounded-full bg-background/20 backdrop-blur-md border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-110"
       >
-        <ChevronUp className="h-5 w-5 text-primary" />
+        <ChevronUp className="h-4 w-4 text-primary" />
       </Button>
 
-      {/* Progress Bar - Draggable */}
       <div 
         ref={progressRef}
-        className="relative w-3 h-40 bg-muted/40 border border-primary/20 rounded-full overflow-hidden backdrop-blur-sm cursor-pointer hover:w-4 transition-all duration-300 shadow-lg shadow-primary/10"
+        className="relative w-3 h-48 bg-background/20 backdrop-blur-md border border-primary/30 rounded-full overflow-hidden cursor-pointer hover:w-4 hover:border-primary/50 transition-all duration-300 shadow-lg shadow-primary/20"
         onMouseDown={handleMouseDown}
         onClick={handleProgressClick}
       >
         <motion.div
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary to-secondary rounded-full"
+          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary via-secondary to-accent rounded-full shadow-inner"
           style={{ height: `${scrollProgress}%` }}
           transition={{ duration: isDragging ? 0 : 0.2, ease: "easeOut" }}
         />
-        {/* Glow effect */}
+        
         <motion.div
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary/60 to-secondary/60 rounded-full blur-sm"
+          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary/40 via-secondary/40 to-accent/40 rounded-full blur-sm"
           style={{ height: `${scrollProgress}%` }}
           transition={{ duration: isDragging ? 0 : 0.2, ease: "easeOut" }}
         />
-        {/* Draggable thumb */}
+        
         <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-gradient-to-br from-primary to-secondary rounded-full border-2 border-white/20 shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 transition-transform duration-200"
+          className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-primary to-secondary rounded-full border-2 border-background/50 shadow-xl cursor-grab active:cursor-grabbing"
           style={{ 
-            bottom: `calc(${scrollProgress}% - 10px)`,
-            opacity: isDragging ? 1 : 0.8
+            bottom: `calc(${scrollProgress}% - 12px)`,
+            boxShadow: `0 0 20px rgba(52, 152, 219, ${isDragging ? 0.8 : 0.4})`
           }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
+          animate={{ 
+            scale: isDragging ? 1.1 : 1,
+            boxShadow: isDragging ? "0 0 30px rgba(52, 152, 219, 0.8)" : "0 0 15px rgba(52, 152, 219, 0.4)"
+          }}
         />
       </div>
 
-      {/* Progress Percentage */}
       <motion.div
-        className="text-xs font-bold text-primary bg-background/90 backdrop-blur-sm px-3 py-2 rounded-full border border-primary/30 shadow-lg shadow-primary/10"
+        className="text-xs font-bold text-primary bg-background/20 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 shadow-lg shadow-primary/10"
         animate={{ scale: scrollProgress > 0 ? 1 : 0.9 }}
       >
         {Math.round(scrollProgress)}%
       </motion.div>
 
-      {/* Scroll Down Button */}
       <Button
         onClick={scrollToBottom}
         size="sm"
         variant="outline"
-        className="w-12 h-12 rounded-full bg-primary/10 backdrop-blur-sm border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+        className="w-10 h-10 rounded-full bg-background/20 backdrop-blur-md border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-110"
       >
-        <ChevronDown className="h-5 w-5 text-primary" />
+        <ChevronDown className="h-4 w-4 text-primary" />
       </Button>
     </motion.div>
   );

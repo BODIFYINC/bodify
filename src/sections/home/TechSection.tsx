@@ -67,17 +67,62 @@ export default function TechSection() {
               whileHover={{ y: -5 }}
               className="relative group"
             >
-              <div className="glassmorphism rounded-2xl p-8 h-full hover:shadow-2xl transition-all duration-300">
-                {/* Icon with animated background */}
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8 text-primary" />
-                  </div>
+              <div className="glassmorphism rounded-2xl p-8 h-full hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 border border-primary/10 hover:border-primary/30">{/*remove any white/light backgrounds*/}
+                {/* Icon with enhanced animated background */}
+                <motion.div 
+                  className="relative mb-6"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300 relative overflow-hidden"
+                    animate={{ 
+                      boxShadow: [
+                        "0 0 20px rgba(52, 152, 219, 0.2)",
+                        "0 0 30px rgba(52, 152, 219, 0.4)",
+                        "0 0 20px rgba(52, 152, 219, 0.2)"
+                      ]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <feature.icon className="w-8 h-8 text-primary relative z-10" />
+                    
+                    {/* Rotating background gradient */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    />
+                  </motion.div>
                   
-                  {/* Animated dots around icon */}
-                  <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-secondary animate-pulse" />
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-primary animate-pulse delay-500" />
-                </div>
+                  {/* Enhanced animated dots around icon */}
+                  <motion.div 
+                    className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-secondary" 
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      opacity: [0.7, 1, 0.7]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div 
+                    className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-primary" 
+                    animate={{ 
+                      scale: [1, 1.4, 1],
+                      opacity: [0.6, 1, 0.6]
+                    }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  />
+                  
+                  {/* Floating particles */}
+                  <motion.div
+                    className="absolute top-2 left-2 w-1 h-1 rounded-full bg-accent"
+                    animate={{ 
+                      y: [0, -8, 0],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  />
+                </motion.div>
 
                 {/* Content */}
                 <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
