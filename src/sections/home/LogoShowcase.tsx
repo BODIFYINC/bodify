@@ -46,14 +46,18 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="text-center">
-          {/* Logo with subtle animation */}
+          {/* Static Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="mb-8"
           >
-            <BodifyLogo className="h-16 w-auto mx-auto" />
+            <img 
+              src="/src/assets/bodify-logo-static.png" 
+              alt="Bodify - AI Fitness Platform" 
+              className="h-16 w-auto mx-auto"
+            />
           </motion.div>
 
           {/* Hero headline */}
