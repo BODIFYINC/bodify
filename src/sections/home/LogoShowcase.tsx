@@ -74,10 +74,21 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto"
           >
-            Your personal AI fitness coach that adapts to your goals, tracks your progress, and provides personalized nutrition guidance.
+            Revolutionary AI-powered fitness coaching that adapts to your unique body, goals, and lifestyle. 
+            Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
           </motion.p>
+          
+          {/* Tagline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-8"
+          >
+            BODIFY YOUR BODY
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div

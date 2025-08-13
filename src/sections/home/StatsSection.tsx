@@ -58,38 +58,109 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -10 }}
               className="relative group"
             >
-              <div className="glassmorphism rounded-2xl p-8 text-center h-full">
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-primary" />
-                </div>
+              <div className="glassmorphism rounded-2xl p-8 text-center h-full relative overflow-hidden">
+                {/* Animated background gradient */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+                />
                 
-                {/* Number with animation */}
+                {/* Icon with enhanced animation */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 + 0.2, type: "spring", bounce: 0.4 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10"
+                >
+                  <stat.icon className="w-8 h-8 text-primary" />
+                  
+                  {/* Animated ring around icon */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 rounded-full border-2 border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                </motion.div>
+                
+                {/* Number with enhanced animation */}
                 <motion.div 
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  transition={{ duration: 0.8, delay: index * 0.2, type: "spring", bounce: 0.3 }}
                   viewport={{ once: true }}
-                  className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative"
+                  className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative z-10"
                 >
                   <span className="relative z-10">{stat.number}</span>
                   <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
                     viewport={{ once: true }}
                     className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-lg -z-10"
+                  />
+                  
+                  {/* Counter animation effect */}
+                  <motion.div
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-md opacity-0"
                   />
                 </motion.div>
                 
                 {/* Label */}
-                <h3 className="text-xl font-semibold mb-2">{stat.label}</h3>
+                <motion.h3 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-xl font-semibold mb-2 relative z-10"
+                >
+                  {stat.label}
+                </motion.h3>
                 
                 {/* Description */}
-                <p className="text-muted-foreground text-sm">{stat.description}</p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
+                  viewport={{ once: true }}
+                  className="text-muted-foreground text-sm relative z-10"
+                >
+                  {stat.description}
+                </motion.p>
+
+                {/* Floating particles */}
+                <motion.div
+                  animate={{ 
+                    y: [0, -20, 0],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.8
+                  }}
+                  className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <motion.div
+                  animate={{ 
+                    y: [0, 15, 0],
+                    opacity: [0.2, 0.8, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 2.5,
+                    repeat: Infinity,
+                    delay: index * 0.6 + 1
+                  }}
+                  className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-gradient-to-r from-secondary to-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
 
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />

@@ -34,43 +34,68 @@ const BodifyLogo: React.FC<LogoProps> = ({
         />
       </circle>
       
-      {/* Fitness transformation symbol - human figure evolving */}
-      <g transform="translate(22, 15)">
-        {/* Body transformation - weak to strong */}
-        <g>
+      {/* Body transformation symbol - before/after silhouettes */}
+      <g transform="translate(15, 12)">
+        {/* Before body (left side - smaller) */}
+        <g opacity="0.6">
           {/* Head */}
-          <circle cx="13" cy="8" r="3" fill="url(#bodifyGradient)" opacity="0.8" />
-          
-          {/* Body core - expanding with strength */}
-          <rect x="11" y="12" width="4" height="12" rx="2" fill="url(#bodifyGradient)" opacity="0.7">
-            <animate attributeName="width" values="4;5;4" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="11;10.5;11" dur="3s" repeatCount="indefinite" />
+          <circle cx="12" cy="8" r="3" fill="url(#bodifyGradient)" opacity="0.5" />
+          {/* Body */}
+          <rect x="10" y="12" width="4" height="14" rx="2" fill="url(#bodifyGradient)" opacity="0.5" />
+          {/* Arms */}
+          <rect x="6" y="14" width="2.5" height="8" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
+          <rect x="15.5" y="14" width="2.5" height="8" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
+          {/* Legs */}
+          <rect x="8.5" y="27" width="2.5" height="12" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
+          <rect x="13" y="27" width="2.5" height="12" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
+        </g>
+        
+        {/* Transformation arrow */}
+        <g transform="translate(20, 20)">
+          <path 
+            d="M2 0 L8 0 M6 -2 L8 0 L6 2" 
+            stroke="url(#bodifyGradient)" 
+            strokeWidth="2" 
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+          </path>
+        </g>
+        
+        {/* After body (right side - stronger/fitter) */}
+        <g transform="translate(20, 0)">
+          {/* Head */}
+          <circle cx="12" cy="8" r="3" fill="url(#bodifyGradient)" />
+          {/* Body - more muscular */}
+          <rect x="9" y="12" width="6" height="14" rx="3" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="6;6.5;6" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="x" values="9;8.75;9" dur="3s" repeatCount="indefinite" />
           </rect>
-          
-          {/* Arms - getting stronger */}
-          <rect x="7" y="14" width="3" height="8" rx="1.5" fill="url(#bodifyGradient)" opacity="0.8">
-            <animate attributeName="width" values="3;4;3" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="7;6.5;7" dur="3s" repeatCount="indefinite" />
+          {/* Arms - stronger */}
+          <rect x="5" y="14" width="3.5" height="8" rx="1.75" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="3.5;4;3.5" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="x" values="5;4.75;5" dur="3s" repeatCount="indefinite" />
           </rect>
-          <rect x="16" y="14" width="3" height="8" rx="1.5" fill="url(#bodifyGradient)" opacity="0.8">
-            <animate attributeName="width" values="3;4;3" dur="3s" repeatCount="indefinite" />
+          <rect x="15.5" y="14" width="3.5" height="8" rx="1.75" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="3.5;4;3.5" dur="3s" repeatCount="indefinite" />
           </rect>
-          
-          {/* Legs - building strength */}
-          <rect x="9" y="25" width="3" height="10" rx="1.5" fill="url(#bodifyGradient)" opacity="0.7">
-            <animate attributeName="width" values="3;4;3" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="9;8.5;9" dur="3s" repeatCount="indefinite" />
+          {/* Legs - stronger */}
+          <rect x="7.5" y="27" width="3" height="12" rx="1.5" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="3;3.5;3" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="x" values="7.5;7.25;7.5" dur="3s" repeatCount="indefinite" />
           </rect>
-          <rect x="14" y="25" width="3" height="10" rx="1.5" fill="url(#bodifyGradient)" opacity="0.7">
-            <animate attributeName="width" values="3;4;3" dur="3s" repeatCount="indefinite" />
+          <rect x="13.5" y="27" width="3" height="12" rx="1.5" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="3;3.5;3" dur="3s" repeatCount="indefinite" />
           </rect>
           
           {/* Muscle definition lines */}
           <path 
-            d="M12 16 L14 16 M12 18 L14 18 M8 17 L9 17 M17 17 L18 17" 
+            d="M10 16 L14 16 M10 18 L14 18 M6 17 L8 17 M16 17 L18 17" 
             stroke="url(#bodifyGradient)" 
             strokeWidth="0.5" 
-            opacity="0.9"
+            opacity="0.8"
             strokeLinecap="round"
           >
             <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
