@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button';
 
 const ScrollIndicator: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min((window.scrollY / totalHeight) * 100, 100);
       setScrollProgress(progress);
-      setIsVisible(window.scrollY > 50);
+      setIsVisible(true);
     };
 
     // Initial call
@@ -43,13 +43,13 @@ const ScrollIndicator: React.FC = () => {
         onClick={scrollToTop}
         size="sm"
         variant="outline"
-        className="w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300"
+        className="w-12 h-12 rounded-full bg-primary/10 backdrop-blur-sm border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
       >
         <ChevronUp className="h-5 w-5 text-primary" />
       </Button>
 
       {/* Progress Bar */}
-      <div className="relative w-1 h-32 bg-muted/30 rounded-full overflow-hidden backdrop-blur-sm">
+      <div className="relative w-2 h-32 bg-muted/40 border border-primary/20 rounded-full overflow-hidden backdrop-blur-sm">{/*shadow-lg shadow-primary/10*/}
         <motion.div
           className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary to-secondary rounded-full"
           style={{ height: `${scrollProgress}%` }}
@@ -76,7 +76,7 @@ const ScrollIndicator: React.FC = () => {
         onClick={scrollToBottom}
         size="sm"
         variant="outline"
-        className="w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300"
+        className="w-12 h-12 rounded-full bg-primary/10 backdrop-blur-sm border-primary/30 hover:bg-primary/20 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
       >
         <ChevronDown className="h-5 w-5 text-primary" />
       </Button>

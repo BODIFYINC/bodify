@@ -25,10 +25,11 @@ export default function HowItWorksScroller() {
                 viewport={{ once: true }}
                 className="snap-center shrink-0 w-[85vw] sm:w-[480px] md:w-[560px] lg:w-[640px]"
               >
-                <div className="glassmorphism rounded-3xl p-8 border-0 h-full">
-                  <div className="text-6xl font-extrabold text-transparent bg-clip-text bg-bodify-gradient mb-4">{s.n}</div>
-                  <h3 className="text-2xl md:text-3xl font-bold kinetic-typography">{s.t}</h3>
-                  <p className="text-white/80 mt-3 text-lg">{s.d}</p>
+                <div className="glassmorphism rounded-3xl p-8 border border-primary/10 h-full hover:border-primary/30 transition-all duration-500 group relative overflow-hidden">{/*hover:shadow-2xl hover:shadow-primary/10*/}
+                  <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="text-6xl font-extrabold text-gradient mb-6 group-hover:scale-110 transition-transform duration-500">{s.n}</div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-gradient transition-all duration-500">{s.t}</h3>
+                  <p className="text-white/80 text-lg leading-relaxed group-hover:text-white/90 transition-colors duration-300">{s.d}</p>
                 </div>
               </motion.div>
             ))}

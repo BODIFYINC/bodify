@@ -23,12 +23,12 @@ export default function BiometricsStrip() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05 }}
               viewport={{ once: true }}
-              className="glassmorphism rounded-2xl p-4 border-0 text-center"
+              className="glassmorphism rounded-2xl p-6 border-0 text-center hover:scale-105 transition-all duration-300 group cursor-pointer"
             >
-              <div className="mx-auto mb-2 h-10 w-10 rounded-xl bg-bodify-gradient flex items-center justify-center animate-icon-pop">
-                <Icon className="h-6 w-6 text-white" />
+              <div className="mx-auto mb-3 h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse group-hover:animate-bounce transition-all duration-300 shadow-lg shadow-primary/20">
+                <Icon className="h-7 w-7 text-white" />
               </div>
-              <p className="text-white/80 text-sm">{label}</p>
+              <p className="text-white/80 text-sm font-medium group-hover:text-white transition-colors duration-300">{label}</p>
             </motion.div>
           ))}
         </div>
