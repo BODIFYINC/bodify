@@ -1,172 +1,139 @@
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import BodifyLogo from '@/components/BodifyLogo';
 
-export default function LogoShowcase() {
+export default function HeroSection() {
   return (
-    <section aria-label="Bodify Brand Showcase" className="relative py-24 bg-gradient-to-br from-background via-background/95 to-background overflow-hidden">
-      {/* Neural network background pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <svg className="w-full h-full" viewBox="0 0 800 600">
-          {/* Animated neural network connections */}
-          {[...Array(12)].map((_, i) => (
-            <motion.circle
-              key={i}
-              cx={100 + (i % 4) * 200}
-              cy={100 + Math.floor(i / 4) * 150}
-              r="2"
-              fill="hsl(var(--primary))"
-              animate={{
-                opacity: [0.2, 0.8, 0.2],
-                scale: [1, 1.5, 1]
-              }}
-              transition={{
-                duration: 3,
-                delay: i * 0.2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-          {/* Connection lines */}
-          <motion.path
-            d="M100,100 L300,100 L500,250 L700,100"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.3"
-            animate={{
-              pathLength: [0, 1, 0]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </svg>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        {/* Floating fitness icons */}
+        <motion.div
+          animate={{ 
+            y: [-20, 20, -20],
+            x: [0, 10, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-1/4 text-4xl opacity-20"
+        >
+          💪
+        </motion.div>
+        <motion.div
+          animate={{ 
+            y: [20, -20, 20],
+            x: [0, -10, 0],
+            rotate: [0, -5, 0]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-32 right-1/4 text-4xl opacity-20"
+        >
+          🏃‍♂️
+        </motion.div>
+        <motion.div
+          animate={{ 
+            y: [-15, 15, -15],
+            x: [10, -10, 10]
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 right-20 text-4xl opacity-20"
+        >
+          🎯
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-3 gap-12 items-center">
-          
-          {/* Icon showcase */}
+        <div className="text-center">
+          {/* Logo with subtle animation */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-8"
           >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="inline-block p-8 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/30 shadow-xl"
-            >
-              <BodifyLogo variant="icon" className="h-16 w-auto" />
-            </motion.div>
-            <p className="mt-4 text-sm text-muted-foreground">Neural Network Icon</p>
+            <BodifyLogo className="h-16 w-auto mx-auto" />
           </motion.div>
 
-          {/* Main logo with creative effects */}
+          {/* Hero headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+          >
+            Transform Your Body with{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              AI Precision
+            </span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+          >
+            Your personal AI fitness coach that adapts to your goals, tracks your progress, and provides personalized nutrition guidance.
+          </motion.p>
+
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            {/* Rotating energy ring */}
-            <div className="relative inline-block">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-4 rounded-full"
-                style={{
-                  background: 'conic-gradient(from 0deg, hsl(var(--primary)) 0%, transparent 30%, hsl(var(--accent)) 60%, transparent 90%, hsl(var(--primary)) 100%)',
-                  filter: 'blur(8px)',
-                  opacity: 0.6
-                }}
-              />
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative bg-background/60 backdrop-blur-xl rounded-2xl p-8 border border-border/50 shadow-2xl"
-              >
-                <BodifyLogo className="h-20 w-auto" />
-              </motion.div>
-            </div>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-6 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
-            >
-              AI-Powered Fitness Evolution
-            </motion.p>
+            <Button asChild size="lg" className="px-8 py-6 text-lg">
+              <Link to="/get-started">Start Your Journey</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg">
+              <Link to="/about">Learn More</Link>
+            </Button>
           </motion.div>
 
-          {/* Wordmark showcase */}
+          {/* Key stats */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              className="inline-block p-8 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/30 shadow-xl"
-            >
-              <BodifyLogo variant="wordmark" className="h-12 w-auto" />
-            </motion.div>
-            <p className="mt-4 text-sm text-muted-foreground">Wordmark Typography</p>
+            {[
+              { number: "10K+", label: "Users Transformed" },
+              { number: "95%", label: "Goal Achievement Rate" },
+              { number: "24/7", label: "AI Coach Available" }
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-muted-foreground">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
-
-        {/* Interactive feature demo */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-6 p-6 rounded-2xl bg-card/30 backdrop-blur-xl border border-border/30">
-            <motion.div
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <BodifyLogo variant="icon" className="h-8 w-auto" />
-            </motion.div>
-            <div className="text-left">
-              <p className="font-semibold">Neural Fitness Processing</p>
-              <p className="text-sm text-muted-foreground">Your data → AI analysis → Optimized results</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Logo variations grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {[
-            { bg: 'bg-background', label: 'Light' },
-            { bg: 'bg-foreground', label: 'Dark' },
-            { bg: 'bg-primary/20', label: 'Tinted' },
-            { bg: 'bg-gradient-to-br from-primary/30 to-accent/30', label: 'Gradient' }
-          ].map((variant, i) => (
-            <motion.div
-              key={variant.label}
-              whileHover={{ y: -4 }}
-              className={`${variant.bg} p-4 rounded-xl border border-border/30 text-center`}
-            >
-              <BodifyLogo className="h-8 w-auto mx-auto mb-2" />
-              <p className="text-xs text-muted-foreground">{variant.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+          <motion.div
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
