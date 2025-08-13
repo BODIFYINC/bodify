@@ -8,38 +8,39 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        {/* Floating fitness icons */}
+        {/* Floating geometric shapes */}
         <motion.div
           animate={{ 
             y: [-20, 20, -20],
             x: [0, 10, 0],
-            rotate: [0, 5, 0]
+            rotate: [0, 360, 0]
           }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-1/4 text-4xl opacity-20"
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-1/4 w-16 h-16 opacity-10"
         >
-          💪
+          <div className="w-full h-full rounded-full bg-gradient-to-r from-primary to-secondary" />
         </motion.div>
         <motion.div
           animate={{ 
             y: [20, -20, 20],
             x: [0, -10, 0],
-            rotate: [0, -5, 0]
+            rotate: [0, -180, 0]
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-32 right-1/4 text-4xl opacity-20"
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-32 right-1/4 w-12 h-12 opacity-15"
         >
-          🏃‍♂️
+          <div className="w-full h-full bg-gradient-to-r from-secondary to-primary transform rotate-45" />
         </motion.div>
         <motion.div
           animate={{ 
             y: [-15, 15, -15],
-            x: [10, -10, 10]
+            x: [10, -10, 10],
+            scale: [1, 1.2, 1]
           }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 right-20 text-4xl opacity-20"
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 right-20 w-8 h-8 opacity-20"
         >
-          🎯
+          <div className="w-full h-full rounded-full bg-gradient-to-r from-primary to-secondary" />
         </motion.div>
       </div>
 

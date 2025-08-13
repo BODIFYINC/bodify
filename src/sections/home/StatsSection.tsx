@@ -67,10 +67,23 @@ export default function StatsSection() {
                   <stat.icon className="w-8 h-8 text-primary" />
                 </div>
                 
-                {/* Number */}
-                <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
-                  {stat.number}
-                </div>
+                {/* Number with animation */}
+                <motion.div 
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative"
+                >
+                  <span className="relative z-10">{stat.number}</span>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
+                    viewport={{ once: true }}
+                    className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-lg -z-10"
+                  />
+                </motion.div>
                 
                 {/* Label */}
                 <h3 className="text-xl font-semibold mb-2">{stat.label}</h3>
