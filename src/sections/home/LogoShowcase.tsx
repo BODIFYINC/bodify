@@ -3,141 +3,169 @@ import BodifyLogo from '@/components/BodifyLogo';
 
 export default function LogoShowcase() {
   return (
-    <section aria-label="Bodify Brand Showcase" className="relative py-32 bg-gradient-to-br from-background via-background/95 to-background overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{ 
-            background: [
-              'radial-gradient(circle at 20% 30%, hsl(var(--primary) / 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.15) 0%, transparent 50%)',
-              'radial-gradient(circle at 40% 60%, hsl(var(--primary) / 0.1) 0%, transparent 50%)'
-            ]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0"
-        />
-        
-        {/* Floating geometric shapes */}
-        <motion.div
-          animate={{ 
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-20 left-1/4 w-32 h-32 rounded-full border border-primary/20 backdrop-blur-sm"
-        />
-        <motion.div
-          animate={{ 
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-            rotate: [360, 180, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-20 right-1/4 w-24 h-24 rounded-lg border border-accent/30 backdrop-blur-sm"
-        />
+    <section aria-label="Bodify Brand Showcase" className="relative py-24 bg-gradient-to-br from-background via-background/95 to-background overflow-hidden">
+      {/* Neural network background pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <svg className="w-full h-full" viewBox="0 0 800 600">
+          {/* Animated neural network connections */}
+          {[...Array(12)].map((_, i) => (
+            <motion.circle
+              key={i}
+              cx={100 + (i % 4) * 200}
+              cy={100 + Math.floor(i / 4) * 150}
+              r="2"
+              fill="hsl(var(--primary))"
+              animate={{
+                opacity: [0.2, 0.8, 0.2],
+                scale: [1, 1.5, 1]
+              }}
+              transition={{
+                duration: 3,
+                delay: i * 0.2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+          {/* Connection lines */}
+          <motion.path
+            d="M100,100 L300,100 L500,250 L700,100"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            fill="none"
+            opacity="0.3"
+            animate={{
+              pathLength: [0, 1, 0]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </svg>
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="text-center">
-          {/* Logo presentation with creative effects */}
+        <div className="grid lg:grid-cols-3 gap-12 items-center">
+          
+          {/* Icon showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative inline-block"
+            className="text-center"
           >
-            {/* Glow effect behind logo */}
             <motion.div
-              animate={{ 
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -inset-8 bg-gradient-to-r from-primary/30 via-accent/40 to-primary/30 blur-2xl rounded-3xl"
-            />
-            
-            {/* Main logo with hover effects */}
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                filter: "brightness(1.1) saturate(1.2)"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative bg-background/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8 shadow-2xl"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="inline-block p-8 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/30 shadow-xl"
             >
-              <BodifyLogo className="h-20 md:h-28 w-auto" />
-              
-              {/* Floating particles */}
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    y: [0, -20, 0],
-                    opacity: [0, 1, 0],
-                    scale: [0, 1, 0]
-                  }}
-                  transition={{
-                    duration: 3,
-                    delay: i * 0.5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full"
-                  style={{
-                    left: `${20 + i * 12}%`,
-                    top: `${10 + (i % 2) * 70}%`
-                  }}
-                />
-              ))}
+              <BodifyLogo variant="icon" className="h-16 w-auto" />
             </motion.div>
+            <p className="mt-4 text-sm text-muted-foreground">Neural Network Icon</p>
           </motion.div>
 
-          {/* Animated tagline */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient-shift">
-              AI-Powered Fitness Revolution
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your personal trainer, nutritionist, and progress tracker — all powered by cutting-edge artificial intelligence.
-            </p>
-          </motion.div>
-
-          {/* Interactive feature badges */}
+          {/* Main logo with creative effects */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="mt-8 flex flex-wrap justify-center gap-4"
+            className="text-center"
           >
-            {[
-              { icon: '🧠', text: 'AI Coach' },
-              { icon: '🍎', text: 'Smart Nutrition' },
-              { icon: '📊', text: 'Progress Tracking' },
-              { icon: '⚡', text: 'Real-time Insights' }
-            ].map((feature, i) => (
+            {/* Rotating energy ring */}
+            <div className="relative inline-block">
               <motion.div
-                key={feature.text}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-sm border border-border/50 rounded-full hover:bg-card/80 transition-colors cursor-pointer"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-4 rounded-full"
+                style={{
+                  background: 'conic-gradient(from 0deg, hsl(var(--primary)) 0%, transparent 30%, hsl(var(--accent)) 60%, transparent 90%, hsl(var(--primary)) 100%)',
+                  filter: 'blur(8px)',
+                  opacity: 0.6
+                }}
+              />
+              
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="relative bg-background/60 backdrop-blur-xl rounded-2xl p-8 border border-border/50 shadow-2xl"
               >
-                <span className="text-lg">{feature.icon}</span>
-                <span className="text-sm font-medium">{feature.text}</span>
+                <BodifyLogo className="h-20 w-auto" />
               </motion.div>
-            ))}
+            </div>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="mt-6 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
+            >
+              AI-Powered Fitness Evolution
+            </motion.p>
+          </motion.div>
+
+          {/* Wordmark showcase */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              className="inline-block p-8 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/30 shadow-xl"
+            >
+              <BodifyLogo variant="wordmark" className="h-12 w-auto" />
+            </motion.div>
+            <p className="mt-4 text-sm text-muted-foreground">Wordmark Typography</p>
           </motion.div>
         </div>
+
+        {/* Interactive feature demo */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-flex items-center gap-6 p-6 rounded-2xl bg-card/30 backdrop-blur-xl border border-border/30">
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <BodifyLogo variant="icon" className="h-8 w-auto" />
+            </motion.div>
+            <div className="text-left">
+              <p className="font-semibold">Neural Fitness Processing</p>
+              <p className="text-sm text-muted-foreground">Your data → AI analysis → Optimized results</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Logo variations grid */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          {[
+            { bg: 'bg-background', label: 'Light' },
+            { bg: 'bg-foreground', label: 'Dark' },
+            { bg: 'bg-primary/20', label: 'Tinted' },
+            { bg: 'bg-gradient-to-br from-primary/30 to-accent/30', label: 'Gradient' }
+          ].map((variant, i) => (
+            <motion.div
+              key={variant.label}
+              whileHover={{ y: -4 }}
+              className={`${variant.bg} p-4 rounded-xl border border-border/30 text-center`}
+            >
+              <BodifyLogo className="h-8 w-auto mx-auto mb-2" />
+              <p className="text-xs text-muted-foreground">{variant.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
