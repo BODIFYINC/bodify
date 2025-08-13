@@ -98,14 +98,20 @@ export default function StatsSection() {
                   viewport={{ once: true }}
                   className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative z-10"
                 >
-                  <span className="relative z-10">
+                  <motion.span 
+                    className="relative z-10 inline-block"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
                     <CountUp 
-                      end={parseInt(stat.number.replace(/[^\d]/g, ''))} 
+                      end={stat.number === "24/7" ? 24 : parseInt(stat.number.replace(/[^\d]/g, ''))} 
                       duration={2.5}
                       delay={index * 0.3}
+                      suffix={stat.number === "24/7" ? "/7" : stat.number.replace(/[\d]/g, '')}
                     />
-                    {stat.number.replace(/[\d]/g, '')}
-                  </span>
+                  </motion.span>
+                  
+                  {/* Dynamic background glow */}
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -114,11 +120,34 @@ export default function StatsSection() {
                     className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur-lg -z-10"
                   />
                   
-                  {/* Counter animation effect */}
+                  {/* Pulsing animation effect */}
                   <motion.div
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-md opacity-0"
+                    animate={{ 
+                      opacity: [0, 0.6, 0],
+                      scale: [0.8, 1.2, 0.8]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      delay: index * 0.7,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg blur-md"
+                  />
+                  
+                  {/* Sparkle effects */}
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [0, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity, 
+                      delay: index * 0.5 + 1,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"
                   />
                 </motion.div>
                 

@@ -35,31 +35,60 @@ const BodifyLogo: React.FC<LogoProps> = ({
         />
       </circle>
       
-      {/* AI Brain/Neural Network Center */}
+      {/* AI Brain/Neural Network Center with Fitness Elements */}
       <g transform="translate(35, 35)">
-        {/* Central AI core */}
-        <circle cx="0" cy="0" r="8" fill="url(#bodifyGradient)" opacity="0.8">
-          <animate attributeName="r" values="8;9;8" dur="3s" repeatCount="indefinite" />
-        </circle>
+        {/* Central fitness muscle core */}
+        <g>
+          {/* Muscle/bicep shape */}
+          <path
+            d="M-6,-4 Q-8,-6 -4,-8 Q0,-9 4,-8 Q8,-6 6,-4 Q4,-2 0,-2 Q-4,-2 -6,-4 Z"
+            fill="url(#bodifyGradient)"
+            opacity="0.9"
+          >
+            <animateTransform 
+              attributeName="transform" 
+              type="scale" 
+              values="1;1.1;1" 
+              dur="2.5s" 
+              repeatCount="indefinite"
+            />
+          </path>
+          
+          {/* Secondary muscle definition */}
+          <path
+            d="M-4,2 Q-6,4 -2,6 Q2,7 6,6 Q8,4 6,2 Q4,4 0,4 Q-4,4 -4,2 Z"
+            fill="url(#bodifyGradient)"
+            opacity="0.8"
+          >
+            <animateTransform 
+              attributeName="transform" 
+              type="scale" 
+              values="1;1.05;1" 
+              dur="2.5s" 
+              repeatCount="indefinite"
+              begin="0.5s"
+            />
+          </path>
+        </g>
         
-        {/* Neural connections */}
+        {/* AI Neural network around fitness core */}
         <g opacity="0.7">
           {/* Connection nodes */}
-          <circle cx="-12" cy="-8" r="2.5" fill="url(#bodifyGradient)">
+          <circle cx="-12" cy="-8" r="2" fill="url(#bodifyGradient)">
             <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
           </circle>
-          <circle cx="12" cy="-8" r="2.5" fill="url(#bodifyGradient)">
+          <circle cx="12" cy="-8" r="2" fill="url(#bodifyGradient)">
             <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="0.5s" />
           </circle>
-          <circle cx="-12" cy="8" r="2.5" fill="url(#bodifyGradient)">
+          <circle cx="-12" cy="8" r="2" fill="url(#bodifyGradient)">
             <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1s" />
           </circle>
-          <circle cx="12" cy="8" r="2.5" fill="url(#bodifyGradient)">
+          <circle cx="12" cy="8" r="2" fill="url(#bodifyGradient)">
             <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1.5s" />
           </circle>
           
-          {/* Connecting lines */}
-          <path d="M-8,-5 L-2,-2 M8,-5 L2,-2 M-8,5 L-2,2 M8,5 L2,2" 
+          {/* Connecting lines to fitness core */}
+          <path d="M-10,-6 L-6,-4 M10,-6 L6,-4 M-10,6 L-6,4 M10,6 L6,4" 
                 stroke="url(#bodifyGradient)" 
                 strokeWidth="1.5" 
                 strokeLinecap="round"
@@ -68,16 +97,23 @@ const BodifyLogo: React.FC<LogoProps> = ({
           </path>
         </g>
         
-        {/* Fitness tracking elements */}
-        <g transform="translate(0, 0)">
-          {/* Heart rate pulse */}
-          <path d="M-3,-1 L-1,1 L1,-1 L3,1" 
+        {/* Fitness progress indicator */}
+        <g transform="translate(0, 10)">
+          <rect x="-8" y="0" width="16" height="2" rx="1" fill="url(#bodifyGradient)" opacity="0.3" />
+          <rect x="-8" y="0" width="12" height="2" rx="1" fill="url(#bodifyGradient)">
+            <animate attributeName="width" values="4;16;4" dur="3s" repeatCount="indefinite" />
+          </rect>
+        </g>
+        
+        {/* Heart rate pulse */}
+        <g transform="translate(0, -12)">
+          <path d="M-6,0 L-4,-2 L-2,2 L0,-3 L2,3 L4,-2 L6,0" 
                 stroke="url(#bodifyGradient)" 
                 strokeWidth="1.5" 
                 fill="none" 
                 strokeLinecap="round"
                 opacity="0.8">
-            <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
           </path>
         </g>
       </g>

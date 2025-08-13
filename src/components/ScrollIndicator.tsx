@@ -10,11 +10,14 @@ const ScrollIndicator: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
+      const progress = Math.min((window.scrollY / totalHeight) * 100, 100);
       setScrollProgress(progress);
-      setIsVisible(window.scrollY > 100);
+      setIsVisible(window.scrollY > 50);
     };
 
+    // Initial call
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

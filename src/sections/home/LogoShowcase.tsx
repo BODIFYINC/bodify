@@ -85,32 +85,67 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="relative mb-8"
+            className="relative mb-12"
           >
             <motion.div
               animate={{ 
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                scale: [1, 1.02, 1]
               }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%]"
+              transition={{ 
+                backgroundPosition: { duration: 4, repeat: Infinity },
+                scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] relative"
               style={{
-                textShadow: "0 0 20px hsl(var(--primary) / 0.3)"
+                textShadow: "0 0 30px hsl(var(--primary) / 0.4)"
               }}
             >
               BODIFY YOUR BODY
+              
+              {/* Floating particles around text */}
+              <motion.div
+                animate={{ 
+                  y: [-10, 10, -10],
+                  opacity: [0.3, 1, 0.3]
+                }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                className="absolute -top-4 -right-4 w-3 h-3 bg-gradient-to-r from-primary to-secondary rounded-full"
+              />
+              <motion.div
+                animate={{ 
+                  y: [10, -10, 10],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="absolute -bottom-2 -left-2 w-2 h-2 bg-gradient-to-r from-secondary to-primary rounded-full"
+              />
             </motion.div>
             
-            {/* Glowing underline */}
+            {/* Enhanced glowing underline with pulse */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"
+              className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"
             >
               <motion.div
-                animate={{ opacity: [0.5, 1, 0.5] }}
+                animate={{ 
+                  opacity: [0.5, 1, 0.5],
+                  scale: [1, 1.1, 1]
+                }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="w-full h-full bg-gradient-to-r from-primary to-secondary rounded-full blur-sm"
+              />
+              
+              {/* Additional glow layers */}
+              <motion.div
+                animate={{ 
+                  opacity: [0.2, 0.8, 0.2],
+                  scaleY: [1, 2, 1]
+                }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                className="absolute inset-0 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-full blur-md"
               />
             </motion.div>
           </motion.div>

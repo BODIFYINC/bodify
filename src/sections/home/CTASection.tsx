@@ -96,7 +96,7 @@ export default function CTASection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button asChild size="lg" className="px-8 py-6 text-lg group">
                 <Link to="/get-started">
-                  Start Free Trial
+                  Start Your Journey
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
