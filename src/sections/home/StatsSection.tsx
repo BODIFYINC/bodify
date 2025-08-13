@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import CountUp from 'react-countup';
 import { TrendingUp, Users, Trophy, Zap } from 'lucide-react';
 
 export default function StatsSection() {
@@ -97,7 +98,14 @@ export default function StatsSection() {
                   viewport={{ once: true }}
                   className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2 relative z-10"
                 >
-                  <span className="relative z-10">{stat.number}</span>
+                  <span className="relative z-10">
+                    <CountUp 
+                      end={parseInt(stat.number.replace(/[^\d]/g, ''))} 
+                      duration={2.5}
+                      delay={index * 0.3}
+                    />
+                    {stat.number.replace(/[\d]/g, '')}
+                  </span>
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}

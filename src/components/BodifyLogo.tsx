@@ -15,7 +15,7 @@ const BodifyLogo: React.FC<LogoProps> = ({
 }) => {
   const CircleMark = () => (
     <g>
-      {/* Outer ring with rotation */}
+      {/* Outer AI neural network ring */}
       <circle 
         cx="35" 
         cy="35" 
@@ -23,7 +23,8 @@ const BodifyLogo: React.FC<LogoProps> = ({
         fill="none" 
         stroke="url(#bodifyGradient)" 
         strokeWidth="2"
-        opacity="0.4"
+        opacity="0.6"
+        strokeDasharray="4 4"
       >
         <animateTransform 
           attributeName="transform" 
@@ -34,99 +35,116 @@ const BodifyLogo: React.FC<LogoProps> = ({
         />
       </circle>
       
-      {/* Body transformation symbol - before/after silhouettes */}
-      <g transform="translate(15, 12)">
-        {/* Before body (left side - smaller) */}
-        <g opacity="0.6">
-          {/* Head */}
-          <circle cx="12" cy="8" r="3" fill="url(#bodifyGradient)" opacity="0.5" />
-          {/* Body */}
-          <rect x="10" y="12" width="4" height="14" rx="2" fill="url(#bodifyGradient)" opacity="0.5" />
-          {/* Arms */}
-          <rect x="6" y="14" width="2.5" height="8" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
-          <rect x="15.5" y="14" width="2.5" height="8" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
-          {/* Legs */}
-          <rect x="8.5" y="27" width="2.5" height="12" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
-          <rect x="13" y="27" width="2.5" height="12" rx="1.25" fill="url(#bodifyGradient)" opacity="0.5" />
-        </g>
+      {/* AI Brain/Neural Network Center */}
+      <g transform="translate(35, 35)">
+        {/* Central AI core */}
+        <circle cx="0" cy="0" r="8" fill="url(#bodifyGradient)" opacity="0.8">
+          <animate attributeName="r" values="8;9;8" dur="3s" repeatCount="indefinite" />
+        </circle>
         
-        {/* Transformation arrow */}
-        <g transform="translate(20, 20)">
-          <path 
-            d="M2 0 L8 0 M6 -2 L8 0 L6 2" 
-            stroke="url(#bodifyGradient)" 
-            strokeWidth="2" 
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+        {/* Neural connections */}
+        <g opacity="0.7">
+          {/* Connection nodes */}
+          <circle cx="-12" cy="-8" r="2.5" fill="url(#bodifyGradient)">
             <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="12" cy="-8" r="2.5" fill="url(#bodifyGradient)">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="0.5s" />
+          </circle>
+          <circle cx="-12" cy="8" r="2.5" fill="url(#bodifyGradient)">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1s" />
+          </circle>
+          <circle cx="12" cy="8" r="2.5" fill="url(#bodifyGradient)">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin="1.5s" />
+          </circle>
+          
+          {/* Connecting lines */}
+          <path d="M-8,-5 L-2,-2 M8,-5 L2,-2 M-8,5 L-2,2 M8,5 L2,2" 
+                stroke="url(#bodifyGradient)" 
+                strokeWidth="1.5" 
+                strokeLinecap="round"
+                opacity="0.6">
+            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite" />
           </path>
         </g>
         
-        {/* After body (right side - stronger/fitter) */}
-        <g transform="translate(20, 0)">
-          {/* Head */}
-          <circle cx="12" cy="8" r="3" fill="url(#bodifyGradient)" />
-          {/* Body - more muscular */}
-          <rect x="9" y="12" width="6" height="14" rx="3" fill="url(#bodifyGradient)">
-            <animate attributeName="width" values="6;6.5;6" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="9;8.75;9" dur="3s" repeatCount="indefinite" />
-          </rect>
-          {/* Arms - stronger */}
-          <rect x="5" y="14" width="3.5" height="8" rx="1.75" fill="url(#bodifyGradient)">
-            <animate attributeName="width" values="3.5;4;3.5" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="5;4.75;5" dur="3s" repeatCount="indefinite" />
-          </rect>
-          <rect x="15.5" y="14" width="3.5" height="8" rx="1.75" fill="url(#bodifyGradient)">
-            <animate attributeName="width" values="3.5;4;3.5" dur="3s" repeatCount="indefinite" />
-          </rect>
-          {/* Legs - stronger */}
-          <rect x="7.5" y="27" width="3" height="12" rx="1.5" fill="url(#bodifyGradient)">
-            <animate attributeName="width" values="3;3.5;3" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="x" values="7.5;7.25;7.5" dur="3s" repeatCount="indefinite" />
-          </rect>
-          <rect x="13.5" y="27" width="3" height="12" rx="1.5" fill="url(#bodifyGradient)">
-            <animate attributeName="width" values="3;3.5;3" dur="3s" repeatCount="indefinite" />
-          </rect>
-          
-          {/* Muscle definition lines */}
-          <path 
-            d="M10 16 L14 16 M10 18 L14 18 M6 17 L8 17 M16 17 L18 17" 
-            stroke="url(#bodifyGradient)" 
-            strokeWidth="0.5" 
-            opacity="0.8"
-            strokeLinecap="round"
-          >
-            <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+        {/* Fitness tracking elements */}
+        <g transform="translate(0, 0)">
+          {/* Heart rate pulse */}
+          <path d="M-3,-1 L-1,1 L1,-1 L3,1" 
+                stroke="url(#bodifyGradient)" 
+                strokeWidth="1.5" 
+                fill="none" 
+                strokeLinecap="round"
+                opacity="0.8">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite" />
           </path>
         </g>
       </g>
       
-      {/* Energy pulse rings */}
-      <circle cx="35" cy="35" r="25" fill="none" stroke="url(#bodifyGradient)" strokeWidth="1" opacity="0.3">
-        <animate attributeName="r" values="25;28;25" dur="4s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite" />
-      </circle>
+      {/* Progress tracking arcs */}
+      <g opacity="0.6">
+        <path d="M 15 35 A 20 20 0 0 1 35 15" 
+              fill="none" 
+              stroke="url(#bodifyGradient)" 
+              strokeWidth="2" 
+              strokeLinecap="round">
+          <animate attributeName="stroke-dasharray" values="0 31.4;31.4 0;0 31.4" dur="4s" repeatCount="indefinite" />
+        </path>
+        <path d="M 35 55 A 20 20 0 0 1 55 35" 
+              fill="none" 
+              stroke="url(#bodifyGradient)" 
+              strokeWidth="2" 
+              strokeLinecap="round">
+          <animate attributeName="stroke-dasharray" values="0 31.4;31.4 0;0 31.4" dur="4s" repeatCount="indefinite" begin="1s" />
+        </path>
+        <path d="M 55 35 A 20 20 0 0 1 35 55" 
+              fill="none" 
+              stroke="url(#bodifyGradient)" 
+              strokeWidth="2" 
+              strokeLinecap="round">
+          <animate attributeName="stroke-dasharray" values="0 31.4;31.4 0;0 31.4" dur="4s" repeatCount="indefinite" begin="2s" />
+        </path>
+        <path d="M 35 15 A 20 20 0 0 1 15 35" 
+              fill="none" 
+              stroke="url(#bodifyGradient)" 
+              strokeWidth="2" 
+              strokeLinecap="round">
+          <animate attributeName="stroke-dasharray" values="0 31.4;31.4 0;0 31.4" dur="4s" repeatCount="indefinite" begin="3s" />
+        </path>
+      </g>
       
-      <circle cx="35" cy="35" r="35" fill="none" stroke="url(#bodifyGradient)" strokeWidth="1" opacity="0.2">
-        <animate attributeName="r" values="35;39;35" dur="5s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite" />
-      </circle>
+      {/* Diet/Nutrition indicators */}
+      <g opacity="0.5">
+        <circle cx="20" cy="20" r="1.5" fill="url(#bodifyGradient)">
+          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="50" cy="20" r="1.5" fill="url(#bodifyGradient)">
+          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="1s" />
+        </circle>
+        <circle cx="50" cy="50" r="1.5" fill="url(#bodifyGradient)">
+          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="2s" />
+        </circle>
+        <circle cx="20" cy="50" r="1.5" fill="url(#bodifyGradient)">
+          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="3s" />
+        </circle>
+      </g>
       
-      {/* Power energy dots */}
-      <circle cx="52" cy="23" r="1.5" fill="url(#bodifyGradient)">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="18" cy="47" r="1.5" fill="url(#bodifyGradient)">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite" begin="0.8s" />
-      </circle>
-      <circle cx="52" cy="47" r="1.5" fill="url(#bodifyGradient)">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite" begin="1.6s" />
-      </circle>
-      <circle cx="18" cy="23" r="1.5" fill="url(#bodifyGradient)">
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite" begin="2.4s" />
-      </circle>
+      {/* Data flow particles */}
+      <g>
+        <circle cx="25" cy="15" r="1" fill="url(#bodifyGradient)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 Q10,10 20,0 Q10,-10 0,0" />
+          <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="45" cy="25" r="1" fill="url(#bodifyGradient)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 Q-10,10 -20,0 Q-10,-10 0,0" begin="2s" />
+          <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite" begin="2s" />
+        </circle>
+        <circle cx="45" cy="45" r="1" fill="url(#bodifyGradient)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 Q-10,-10 -20,0 Q-10,10 0,0" begin="4s" />
+          <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite" begin="4s" />
+        </circle>
+      </g>
     </g>
   );
 
@@ -142,6 +160,7 @@ const BodifyLogo: React.FC<LogoProps> = ({
         fontFamily="system-ui, -apple-system, sans-serif"
       >
         BODIFY
+        <animate attributeName="fill" values="url(#bodifyGradient);url(#bodifyGradientAlt);url(#bodifyGradient)" dur="4s" repeatCount="indefinite" />
       </text>
       {/* Underline accent */}
       <rect 
@@ -153,6 +172,7 @@ const BodifyLogo: React.FC<LogoProps> = ({
         opacity="0.6"
       >
         <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="width" values="140;150;140" dur="4s" repeatCount="indefinite" />
       </rect>
     </g>
   );
@@ -171,6 +191,11 @@ const BodifyLogo: React.FC<LogoProps> = ({
         <linearGradient id="bodifyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(var(--primary))" />
           <stop offset="50%" stopColor="hsl(var(--secondary))" />
+          <stop offset="100%" stopColor="hsl(var(--accent))" />
+        </linearGradient>
+        <linearGradient id="bodifyGradientAlt" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(var(--secondary))" />
+          <stop offset="50%" stopColor="hsl(var(--primary))" />
           <stop offset="100%" stopColor="hsl(var(--accent))" />
         </linearGradient>
       </defs>

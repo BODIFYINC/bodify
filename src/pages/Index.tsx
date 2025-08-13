@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight, Zap, Target, Users, Trophy } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollIndicator from '@/components/ScrollIndicator';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
@@ -36,6 +37,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <ScrollIndicator />
       
       {/* Hero Section */}
       <HeroSection />

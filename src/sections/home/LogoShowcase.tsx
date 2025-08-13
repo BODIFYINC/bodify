@@ -80,14 +80,39 @@ export default function HeroSection() {
             Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
           </motion.p>
           
-          {/* Tagline */}
+          {/* Enhanced Tagline */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-8"
+            className="relative mb-8"
           >
-            BODIFY YOUR BODY
+            <motion.div
+              animate={{ 
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%]"
+              style={{
+                textShadow: "0 0 20px hsl(var(--primary) / 0.3)"
+              }}
+            >
+              BODIFY YOUR BODY
+            </motion.div>
+            
+            {/* Glowing underline */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"
+            >
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-full h-full bg-gradient-to-r from-primary to-secondary rounded-full blur-sm"
+              />
+            </motion.div>
           </motion.div>
 
           {/* CTA Buttons */}
