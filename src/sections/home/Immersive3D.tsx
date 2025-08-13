@@ -1,62 +1,94 @@
 import { motion } from 'framer-motion';
-import BodifyLogo from '@/components/BodifyLogo';
+import LogoShowcase from './LogoShowcase';
 
 export default function Immersive3D() {
   return (
-    <section aria-label="Bodify Identity" className="relative py-24 bg-gradient-to-b from-bodify-darker via-bodify-dark to-bodify-darker">
-      <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-2 gap-10 items-center">
-        {/* Copy focused on Bodify, not UI jargon */}
-        <div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">Bodify. AI fitness that adapts to you.</h2>
-          <p className="text-white/80 text-lg mb-6">
-            Your personalized workouts, smart nutrition, and real-time coaching—built around your goals, schedule, and preferences.
-          </p>
-          <ul className="space-y-2 text-white/80">
-            <li className="flex items-center"><span className="h-5 w-5 rounded-full bg-bodify-gradient mr-3" />Adaptive training plans that evolve with your progress</li>
-            <li className="flex items-center"><span className="h-5 w-5 rounded-full bg-bodify-gradient mr-3" />Meal guidance filtered by your dislikes and targets</li>
-            <li className="flex items-center"><span className="h-5 w-5 rounded-full bg-bodify-gradient mr-3" />Clear, actionable insights—no fluff</li>
-          </ul>
-        </div>
-
-        {/* Animated Bodify logo showcase (replaces random 3D) */}
-        <div className="relative rounded-2xl overflow-hidden glassmorphism border-0 p-10 flex items-center justify-center">
-          {/* Ambient glow */}
+    <>
+      <LogoShowcase />
+      <section aria-label="Bodify Features" className="relative py-24 bg-gradient-to-b from-background to-muted/30">
+        <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
+          {/* Enhanced copy */}
           <motion.div
-            aria-hidden
-            initial={{ opacity: 0.2, scale: 0.95 }}
-            animate={{ opacity: [0.2, 0.35, 0.2], scale: [0.95, 1.02, 0.95] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute h-72 w-72 md:h-96 md:w-96 rounded-full bg-bodify-gradient blur-3xl"
-          />
-
-          {/* Rotating gradient ring */}
-          <motion.div
-            aria-hidden
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
-            className="absolute h-80 w-80 md:h-[28rem] md:w-[28rem] rounded-full"
-            style={{
-              background: 'conic-gradient(from 0deg, hsl(var(--primary)) 0%, transparent 30%, hsl(var(--accent)) 60%, transparent 90%, hsl(var(--primary)) 100%)',
-              maskImage: 'radial-gradient(farthest-side, transparent calc(100% - 6px), black calc(100% - 5px))',
-              WebkitMaskImage: 'radial-gradient(farthest-side, transparent calc(100% - 6px), black calc(100% - 5px))',
-              opacity: 0.35,
-            }}
-          />
-
-          {/* Logo image showcase */}
-          <motion.figure
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative z-10 text-center"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div whileHover={{ scale: 1.03 }}>
-              <BodifyLogo className="h-16 md:h-20 w-auto" alt="Bodify AI fitness logo" />
-            </motion.div>
-            <figcaption className="mt-3 text-white/70">Your body, your plan — powered by AI</figcaption>
-          </motion.figure>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              AI fitness that adapts to you.
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Your personalized workouts, smart nutrition, and real-time coaching—built around your goals, schedule, and preferences.
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Adaptive training plans that evolve with your progress",
+                "Meal guidance filtered by your dislikes and targets", 
+                "Clear, actionable insights—no fluff"
+              ].map((text, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.4 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent" />
+                  <span className="text-foreground/80">{text}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Interactive tech visualization */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative rounded-3xl overflow-hidden border border-border/50 bg-card/20 backdrop-blur-xl p-8">
+              {/* Animated grid background */}
+              <div className="absolute inset-0 opacity-20">
+                <svg className="w-full h-full" viewBox="0 0 400 300">
+                  <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(var(--primary))" strokeWidth="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
+
+              {/* Floating data points */}
+              <div className="relative z-10 space-y-6">
+                {['Workout Analysis', 'Nutrition Tracking', 'Progress Insights'].map((label, i) => (
+                  <motion.div
+                    key={label}
+                    animate={{ 
+                      x: [0, 10, 0],
+                      opacity: [0.6, 1, 0.6]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      delay: i * 0.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-background/40 border border-border/30"
+                  >
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent" />
+                    <span className="text-sm font-medium">{label}</span>
+                    <div className="ml-auto text-xs text-muted-foreground">AI Processing...</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
