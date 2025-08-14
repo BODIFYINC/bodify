@@ -71,9 +71,14 @@ export default function HeroSection() {
             }}
             className="mb-8 cursor-pointer"
           >
-            <motion.div
+            <motion.img
+              src="/src/assets/bodify-logo-primary.webp"
+              alt="Bodify Logo"
+              className="h-16 w-auto mx-auto"
               animate={{
                 y: [0, -8, 0],
+                rotate: [0, 2, -2, 0],
+                scale: [1, 1.05, 1],
                 filter: [
                   "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))",
                   "drop-shadow(0 15px 25px hsl(var(--primary) / 0.5))",
@@ -85,9 +90,12 @@ export default function HeroSection() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-            >
-              <BodifyLogo className="h-16 w-auto mx-auto" variant="full" />
-            </motion.div>
+              whileHover={{
+                scale: 1.1,
+                rotate: [0, 5, -5, 0],
+                transition: { duration: 0.3 }
+              }}
+            />
           </motion.div>
 
           {/* Hero headline */}
