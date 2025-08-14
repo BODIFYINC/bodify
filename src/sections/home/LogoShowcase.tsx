@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import BodifyLogo from '@/components/BodifyLogo';
 import CountUp from 'react-countup';
-import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 export default function HeroSection() {
   return (
@@ -54,56 +53,17 @@ export default function HeroSection() {
             animate={{ 
               opacity: 1, 
               scale: 1, 
-              y: 0,
-              rotate: [0, 1, -1, 0]
+              y: 0
             }}
             transition={{ 
               duration: 1.2, 
-              ease: "easeOut",
-              rotate: {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
-            whileHover={{
-              scale: 1.1,
-              rotate: [0, 5, -5, 0],
-              filter: "drop-shadow(0 0 20px hsl(var(--primary) / 0.5))"
+              ease: "easeOut"
             }}
             className="mb-8 cursor-pointer"
           >
-            <motion.img
-              src={bodifyLogo}
+            <BodifyLogo 
+              className="h-24 w-auto mx-auto"
               alt="Bodify Logo"
-              className="h-20 w-auto mx-auto filter drop-shadow-2xl"
-              animate={{
-                y: [0, -12, 0],
-                rotate: [0, 1, -1, 0],
-                scale: [1, 1.08, 1],
-                filter: [
-                  "drop-shadow(0 10px 30px hsl(var(--primary) / 0.4)) brightness(1.1)",
-                  "drop-shadow(0 20px 40px hsl(var(--secondary) / 0.6)) brightness(1.2)",
-                  "drop-shadow(0 10px 30px hsl(var(--primary) / 0.4)) brightness(1.1)"
-                ]
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              whileHover={{
-                scale: 1.15,
-                rotate: [0, 3, -3, 0],
-                y: -8,
-                filter: "drop-shadow(0 25px 50px hsl(var(--primary) / 0.8)) brightness(1.3)",
-                transition: { 
-                  duration: 0.4,
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 10
-                }
-              }}
             />
           </motion.div>
 
