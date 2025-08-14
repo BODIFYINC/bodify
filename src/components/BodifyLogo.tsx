@@ -17,7 +17,7 @@ const BodifyLogo: React.FC<LogoProps> = ({
     <motion.img
       src={bodifyLogo}
       alt={alt}
-      className={`${className} transition-all duration-300 filter drop-shadow-lg bg-transparent`}
+      className={`${className} transition-all duration-300 filter drop-shadow-lg`}
       whileHover={{
         scale: 1.05,
         filter: "drop-shadow(0 10px 30px hsl(var(--primary) / 0.5)) brightness(1.1)",
