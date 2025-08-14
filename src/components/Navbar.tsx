@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import BodifyLogo from './BodifyLogo';
+import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 const TikTokIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -63,7 +64,7 @@ const Navbar = () => {
             }}
           >
             <img 
-              src="src/assets/bodify-logo-refined.png" 
+              src={bodifyLogo} 
               alt="Bodify Logo" 
               className="h-10 w-auto transition-all duration-300 group-hover:brightness-110 filter drop-shadow-lg" 
             />

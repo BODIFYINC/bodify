@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import BodifyLogo from '@/components/BodifyLogo';
+import CountUp from 'react-countup';
+import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 export default function HeroSection() {
   return (
@@ -72,7 +74,7 @@ export default function HeroSection() {
             className="mb-8 cursor-pointer"
           >
             <motion.img
-              src="src/assets/bodify-logo-refined.png"
+              src={bodifyLogo}
               alt="Bodify Logo"
               className="h-20 w-auto mx-auto filter drop-shadow-2xl"
               animate={{
@@ -222,19 +224,91 @@ export default function HeroSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {[
-              { number: "10K+", label: "Users Transformed" },
-              { number: "95%", label: "Goal Achievement Rate" },
-              { number: "24/7", label: "AI Coach Available" }
+              { number: 10000, suffix: "K+", label: "Users Transformed" },
+              { number: 95, suffix: "%", label: "Goal Achievement Rate" },
+              { number: 24, suffix: "/7", label: "AI Coach Available" }
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
-                whileHover={{ scale: 1.05 }}
-                className="p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50"
+                whileHover={{ 
+                  scale: 1.08,
+                  y: -5,
+                  filter: "drop-shadow(0 10px 30px hsl(var(--primary) / 0.4))"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative p-8 rounded-2xl bg-gradient-to-br from-card/40 via-card/30 to-transparent backdrop-blur-md border border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden"
               >
-                <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
-                  {stat.number}
+                {/* Animated background glow */}
+                <motion.div
+                  animate={{ 
+                    opacity: [0.1, 0.3, 0.1],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    delay: i * 0.5
+                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl"
+                />
+                
+                {/* Floating particles */}
+                <motion.div
+                  animate={{ 
+                    y: [-10, 10, -10],
+                    x: [-5, 5, -5],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    delay: i * 0.3
+                  }}
+                  className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"
+                />
+                
+                <div className="relative z-10">
+                  <motion.div 
+                    className="text-4xl md:text-5xl font-black mb-3"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + i * 0.2, duration: 0.6 }}
+                  >
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent bg-[length:200%_100%] animate-[gradient_3s_ease-in-out_infinite]">
+                      <CountUp
+                        start={0}
+                        end={stat.number}
+                        duration={2.5}
+                        delay={1 + i * 0.3}
+                        separator=","
+                        useEasing={true}
+                      />
+                      {stat.suffix}
+                    </span>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="text-muted-foreground font-medium tracking-wide"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 + i * 0.2, duration: 0.5 }}
+                  >
+                    {stat.label}
+                  </motion.div>
                 </div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                
+                {/* Gradient border animation */}
+                <motion.div
+                  animate={{ 
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
+                    delay: i * 0.5
+                  }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
               </motion.div>
             ))}
           </motion.div>
