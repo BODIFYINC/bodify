@@ -43,16 +43,30 @@ const Navbar = () => {
         <Link to="/" className="flex items-center group">
           <motion.div
             whileHover={{ 
-              scale: 1.05,
+              scale: 1.08,
               rotate: [0, -2, 2, 0],
-              y: [0, -2, 0]
+              y: [0, -3, 0]
+            }}
+            animate={{
+              y: [0, -1, 0],
+              filter: [
+                "drop-shadow(0 2px 8px rgba(52, 152, 219, 0.3))",
+                "drop-shadow(0 4px 12px rgba(52, 152, 219, 0.5))",
+                "drop-shadow(0 2px 8px rgba(52, 152, 219, 0.3))"
+              ]
             }}
             transition={{ 
               duration: 0.6,
-              ease: "easeInOut"
+              ease: "easeInOut",
+              y: { duration: 3, repeat: Infinity },
+              filter: { duration: 3, repeat: Infinity }
             }}
           >
-            <BodifyLogo className="h-10 w-auto" variant="full" />
+            <img 
+              src="src/assets/bodify-logo-refined.png" 
+              alt="Bodify Logo" 
+              className="h-10 w-auto transition-all duration-300 group-hover:brightness-110 filter drop-shadow-lg" 
+            />
           </motion.div>
         </Link>
 

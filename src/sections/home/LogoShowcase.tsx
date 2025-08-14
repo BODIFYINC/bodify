@@ -72,28 +72,35 @@ export default function HeroSection() {
             className="mb-8 cursor-pointer"
           >
             <motion.img
-              src="/src/assets/bodify-logo-primary.webp"
+              src="src/assets/bodify-logo-refined.png"
               alt="Bodify Logo"
-              className="h-16 w-auto mx-auto"
+              className="h-20 w-auto mx-auto filter drop-shadow-2xl"
               animate={{
-                y: [0, -8, 0],
-                rotate: [0, 2, -2, 0],
-                scale: [1, 1.05, 1],
+                y: [0, -12, 0],
+                rotate: [0, 1, -1, 0],
+                scale: [1, 1.08, 1],
                 filter: [
-                  "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))",
-                  "drop-shadow(0 15px 25px hsl(var(--primary) / 0.5))",
-                  "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))"
+                  "drop-shadow(0 10px 30px hsl(var(--primary) / 0.4)) brightness(1.1)",
+                  "drop-shadow(0 20px 40px hsl(var(--secondary) / 0.6)) brightness(1.2)",
+                  "drop-shadow(0 10px 30px hsl(var(--primary) / 0.4)) brightness(1.1)"
                 ]
               }}
               transition={{
-                duration: 3,
+                duration: 5,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
               whileHover={{
-                scale: 1.1,
-                rotate: [0, 5, -5, 0],
-                transition: { duration: 0.3 }
+                scale: 1.15,
+                rotate: [0, 3, -3, 0],
+                y: -8,
+                filter: "drop-shadow(0 25px 50px hsl(var(--primary) / 0.8)) brightness(1.3)",
+                transition: { 
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 10
+                }
               }}
             />
           </motion.div>
