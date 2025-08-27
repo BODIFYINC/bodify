@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import bodifyLogo from '@/assets/bodify-logo-static.png';
+import bodifyLogo from '@/assets/bodify-logo-primary.webp';
 
 interface LogoProps {
   className?: string;
@@ -17,24 +17,20 @@ const BodifyLogo: React.FC<LogoProps> = ({
     <motion.img
       src={bodifyLogo}
       alt={alt}
-      className={`${className} transition-all duration-300 filter drop-shadow-lg`}
-      whileHover={{
-        scale: 1.05,
-        filter: "drop-shadow(0 10px 30px hsl(var(--primary) / 0.5)) brightness(1.1)",
-        transition: { duration: 0.3 }
-      }}
+      className={`${className} transition-all duration-500 filter drop-shadow-[0_10px_30px_hsl(var(--primary)/0.35)] saturate-125`}
+      initial={{ opacity: 0, y: -6, scale: 0.98 }}
       animate={{
+        opacity: 1,
+        y: [0, -4, 0],
+        scale: [1, 1.02, 1],
         filter: [
-          "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))",
-          "drop-shadow(0 8px 25px hsl(var(--secondary) / 0.4))",
-          "drop-shadow(0 5px 15px hsl(var(--primary) / 0.3))"
+          'drop-shadow(0 8px 24px hsl(var(--primary) / 0.35))',
+          'drop-shadow(0 12px 32px hsl(var(--secondary) / 0.4))',
+          'drop-shadow(0 8px 24px hsl(var(--primary) / 0.35))'
         ]
       }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}
+      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      whileHover={{ scale: 1.06 }}
     />
   );
 };
