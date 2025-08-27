@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Play, ArrowRight, Zap, Target, Users, Trophy, Sparkles, Star, ChevronDown, Shield, Heart, Activity } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BodifyLogo from '@/components/BodifyLogo';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -75,41 +76,68 @@ const Index = () => {
 
       <Navbar />
 
-      {/* Hero Section with Background Video */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover opacity-30"
-            onLoadedData={() => setVideoLoaded(true)}
-          >
-            <source src="https://cdn.pixabay.com/video/2022/12/06/142041-779048616_large.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/90" />
-        </div>
-
-        {/* Light floating accents (performance friendly) */}
+      {/* Hero Section with Emerald/Turquoise Theme */}
+      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 flex items-center justify-center overflow-hidden">
+        {/* Enhanced 3D Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(3)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              animate={{ y: [0, -12, 0], opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 6 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.6 }}
-              className="absolute w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full blur-sm"
-              style={{ left: `${15 + i * 25}%`, top: `${30 + i * 15}%` }}
-            />
+              className="absolute animate-float opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${8 + i}s`
+              }}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, 15, 0],
+                rotate: [0, 180, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 8 + i,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 shadow-2xl" />
+            </motion.div>
           ))}
+        </div>
+
+        {/* Parallax Background Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-r from-white/10 to-emerald-200/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-r from-cyan-200/20 to-white/10 rounded-full blur-3xl"
+          />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 text-center">
+          {/* Bodify Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="mb-12"
+          >
+            <BodifyLogo 
+              className="h-20 md:h-24 w-auto mx-auto filter drop-shadow-2xl"
+              alt="Bodify - Transform Your Body with AI"
+            />
+          </motion.div>
+
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Badge className="mb-8 px-6 py-2 text-sm font-medium bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-sm border-primary/30">
+            <Badge className="mb-8 px-8 py-3 text-sm font-bold bg-white/20 backdrop-blur-sm border-white/30 text-white">
               <Sparkles className="w-4 h-4 mr-2" /> AI-Powered Fitness Revolution
             </Badge>
           </motion.div>
@@ -118,10 +146,10 @@ const Index = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-white"
           >
-            Transform Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-gradient-shift">
+            <span className="block drop-shadow-2xl">Transform Your</span>
+            <span className="block bg-gradient-to-r from-white via-emerald-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
               Body & Mind
             </span>
           </motion.h1>
@@ -130,33 +158,97 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
           >
-            Experience the future of fitness with AI-powered personal training, intelligent nutrition planning, and comprehensive health monitoring.
+            Revolutionary AI-powered fitness coaching that adapts to your unique body, goals, and lifestyle. 
+            Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
           </motion.p>
 
+          {/* Interactive Feature Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto"
+          >
+            {[
+              { 
+                icon: <Activity className="w-8 h-8" />, 
+                title: 'AI Personal Trainer', 
+                desc: 'Smart coaching that learns and adapts to your progress',
+                gradient: 'from-emerald-500/20 to-teal-500/20'
+              },
+              { 
+                icon: <Heart className="w-8 h-8" />, 
+                title: 'Custom Nutrition', 
+                desc: 'Personalized meal plans tailored to your goals and preferences',
+                gradient: 'from-teal-500/20 to-cyan-500/20'
+              },
+              { 
+                icon: <Target className="w-8 h-8" />, 
+                title: 'Progress Analytics', 
+                desc: 'Real-time insights and comprehensive fitness tracking',
+                gradient: 'from-cyan-500/20 to-emerald-500/20'
+              }
+            ].map((feature, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer group shadow-2xl`}
+                whileHover={{ scale: 1.05, y: -8 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="text-white text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-100 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-white/80 leading-relaxed group-hover:text-white transition-colors">
+                  {feature.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Enhanced CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col items-center gap-8"
           >
-            <Button asChild size="lg" className="btn-primary px-10 py-6 text-lg font-semibold group">
-              <Link to="/get-started">
-                Get Premium
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="lg"
-              className="px-10 py-6 text-lg font-semibold border border-primary/30 hover:bg-primary/10 group"
-              onClick={() => setIsDemoOpen(true)}
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-emerald-600 px-16 py-5 rounded-full text-2xl font-bold hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/25 border-2 border-white/20 backdrop-blur-sm"
             >
-              <Play className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
-              Watch Demo
-            </Button>
+              <Link to="/get-started" className="flex items-center gap-3">
+                Start Your AI Fitness Journey
+                <ArrowRight className="w-6 h-6" />
+              </Link>
+            </motion.button>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white/80">
+              {[
+                { icon: <Users className="w-5 h-5" />, text: '10K+ Users Transformed' },
+                { icon: <Trophy className="w-5 h-5" />, text: '95% Goal Achievement' },
+                { icon: <Zap className="w-5 h-5" />, text: '24/7 AI Support' }
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="flex items-center gap-3 justify-center"
+                >
+                  <div className="text-emerald-200">{stat.icon}</div>
+                  <span className="font-medium">{stat.text}</span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Floating Stats Cards */}
