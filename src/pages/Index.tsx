@@ -77,49 +77,9 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section with Emerald/Turquoise Theme */}
-      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-b from-background via-[hsl(var(--primary)/0.06)] to-background flex items-center justify-center overflow-hidden">
         {/* Enhanced 3D Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute animate-float opacity-20"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${8 + i}s`
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 15, 0],
-                rotate: [0, 180, 0],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 8 + i,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }}
-            >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 shadow-2xl" />
-            </motion.div>
-          ))}
-        </div>
 
-        {/* Parallax Background Orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-r from-white/10 to-emerald-200/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-            className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-r from-cyan-200/20 to-white/10 rounded-full blur-3xl"
-          />
-        </div>
 
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 text-center">

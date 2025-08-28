@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import bodifyLogo from '@/assets/bodify-logo-transparent.png';
+import bodifyLogo from '@/assets/bodify-logo-static-removebg-preview.png';
 
 interface LogoProps {
   className?: string;
@@ -21,13 +21,8 @@ const BodifyLogo: React.FC<LogoProps> = ({
       initial={{ opacity: 0, y: -6, scale: 0.98 }}
       animate={{
         opacity: 1,
-        y: [0, -4, 0],
-        scale: [1, 1.02, 1],
-        filter: [
-          'drop-shadow(0 8px 24px hsl(var(--primary) / 0.35))',
-          'drop-shadow(0 12px 32px hsl(var(--secondary) / 0.4))',
-          'drop-shadow(0 8px 24px hsl(var(--primary) / 0.35))'
-        ]
+        y: [0, -3, 0],
+        scale: [1, 1.03, 1]
       }}
       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       whileHover={{ scale: 1.06 }}
