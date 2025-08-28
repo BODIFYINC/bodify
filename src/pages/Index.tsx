@@ -77,7 +77,13 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section with Emerald/Turquoise Theme */}
-      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-b from-background via-[hsl(var(--primary)/0.06)] to-background flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-br from-background via-card to-background flex items-center justify-center overflow-hidden">
+        {/* Ambient Lighting Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+          <div className="absolute top-1/2 left-0 w-64 h-64 bg-accent/6 rounded-full blur-2xl animate-pulse" style={{animationDelay: '4s'}} />
+        </div>
         {/* Enhanced 3D Floating Elements */}
 
 
@@ -85,31 +91,32 @@ const Index = () => {
         <div className="relative z-10 container mx-auto px-6 text-center">
           {/* Bodify Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="mb-12"
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+            className="mb-16 relative"
           >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl scale-150" />
             <BodifyLogo 
-              className="h-20 md:h-24 w-auto mx-auto filter drop-shadow-2xl"
+              className="h-24 md:h-32 w-auto mx-auto relative z-10 filter drop-shadow-[0_0_30px_hsl(var(--primary)/0.5)]"
               alt="Bodify - Transform Your Body with AI"
             />
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Badge className="mb-8 px-8 py-3 text-sm font-bold bg-white/20 backdrop-blur-sm border-white/30 text-white">
-              <Sparkles className="w-4 h-4 mr-2" /> AI-Powered Fitness Revolution
+            <Badge className="mb-10 px-10 py-4 text-base font-bold bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-xl border-primary/30 text-primary shadow-lg shadow-primary/20">
+              <Sparkles className="w-5 h-5 mr-3" /> AI-Powered Fitness Revolution
             </Badge>
           </motion.div>
 
            <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-[0.9]"
           >
-            <span className="block text-foreground drop-shadow-2xl">BODIFY YOUR</span>
-            <span className="block text-gradient drop-shadow-2xl">
+            <span className="block text-foreground drop-shadow-2xl tracking-tight">BODIFY YOUR</span>
+            <span className="block text-gradient drop-shadow-2xl tracking-tight animate-gradient">
               BODY
             </span>
           </motion.h1>
@@ -117,10 +124,10 @@ const Index = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-10"
           >
-            <p className="text-2xl md:text-3xl font-bold text-primary drop-shadow-lg">
+            <p className="text-3xl md:text-4xl font-bold text-primary drop-shadow-lg tracking-wide">
               Your Ultimate AI Fitness Companion
             </p>
           </motion.div>
@@ -128,8 +135,8 @@ const Index = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-muted-foreground mb-16 max-w-5xl mx-auto leading-relaxed font-medium"
           >
             Revolutionary AI-powered fitness coaching that adapts to your unique body, goals, and lifestyle. 
             Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
@@ -144,22 +151,22 @@ const Index = () => {
           >
             {[
               { 
-                icon: <Activity className="w-8 h-8" />, 
-                title: 'AI Personal Trainer', 
-                desc: 'Smart coaching that learns and adapts to your progress',
-                gradient: 'from-emerald-500/20 to-teal-500/20'
-              },
-              { 
-                icon: <Heart className="w-8 h-8" />, 
-                title: 'Custom Nutrition', 
-                desc: 'Personalized meal plans tailored to your goals and preferences',
-                gradient: 'from-teal-500/20 to-cyan-500/20'
-              },
-              { 
-                icon: <Target className="w-8 h-8" />, 
-                title: 'Progress Analytics', 
-                desc: 'Real-time insights and comprehensive fitness tracking',
-                gradient: 'from-cyan-500/20 to-emerald-500/20'
+                 icon: <Activity className="w-10 h-10" />, 
+                 title: 'AI Personal Trainer', 
+                 desc: 'Smart coaching that learns and adapts to your progress',
+                 gradient: 'from-primary/25 to-primary/15'
+               },
+               { 
+                 icon: <Heart className="w-10 h-10" />, 
+                 title: 'Custom Nutrition', 
+                 desc: 'Personalized meal plans tailored to your goals and preferences',
+                 gradient: 'from-secondary/25 to-secondary/15'
+               },
+               { 
+                 icon: <Target className="w-10 h-10" />, 
+                 title: 'Progress Analytics', 
+                 desc: 'Real-time insights and comprehensive fitness tracking',
+                 gradient: 'from-accent/25 to-accent/15'
               }
             ].map((feature, index) => (
               <motion.div 
@@ -167,38 +174,38 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer group shadow-2xl`}
-                whileHover={{ scale: 1.05, y: -8 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="text-white text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-100 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-white/80 leading-relaxed group-hover:text-white transition-colors">
-                  {feature.desc}
-                </p>
+                 className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-xl rounded-3xl p-10 border border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 hover:-translate-y-3 cursor-pointer group shadow-2xl hover:shadow-primary/10`}
+                 whileHover={{ scale: 1.05, y: -12 }}
+                 whileTap={{ scale: 0.95 }}
+               >
+                 <div className="text-primary text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                   {feature.icon}
+                 </div>
+                 <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                   {feature.title}
+                 </h3>
+                 <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-foreground transition-colors">
+                   {feature.desc}
+                 </p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Enhanced CTA Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col items-center gap-8"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col items-center gap-12 mt-16"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.08, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary px-16 py-5 rounded-full text-2xl font-bold transition-all duration-300 shadow-2xl"
+              className="btn-primary px-20 py-6 rounded-full text-2xl font-bold transition-all duration-300 shadow-2xl hover:shadow-primary/30 border-2 border-primary/20"
             >
-              <Link to="/get-started" className="flex items-center gap-3">
+              <Link to="/get-started" className="flex items-center gap-4">
                 Start Your AI Fitness Journey
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-7 h-7" />
               </Link>
             </motion.button>
             
