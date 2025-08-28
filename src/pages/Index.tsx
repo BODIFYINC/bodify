@@ -142,17 +142,28 @@ const Index = () => {
             </Badge>
           </motion.div>
 
-          <motion.h1
+           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight text-white"
           >
-            <span className="block drop-shadow-2xl">Transform Your</span>
+            <span className="block drop-shadow-2xl">BODIFY YOUR</span>
             <span className="block bg-gradient-to-r from-white via-emerald-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
-              Body & Mind
+              BODY
             </span>
           </motion.h1>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-8"
+          >
+            <p className="text-2xl md:text-3xl font-bold text-emerald-100 drop-shadow-lg">
+              Your Ultimate AI Fitness Companion
+            </p>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -378,12 +389,166 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Success Stories Section */}
+      <section className="py-24 bg-gradient-to-b from-background to-primary/5">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Success Stories with{' '}
+              <span className="text-gradient">BODIFY YOUR BODY</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Real transformations from people who chose to bodify their bodies with our AI-powered platform.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+            {[
+              {
+                name: "Sarah M.",
+                achievement: "Lost 30 lbs in 3 months",
+                quote: "Bodify's AI coach understood my busy schedule and created perfect workouts. I finally bodified my body!",
+                stats: "15% body fat reduction"
+              },
+              {
+                name: "Mike R.",
+                achievement: "Gained 20 lbs muscle",
+                quote: "The nutrition AI was a game-changer. My transformation exceeded all expectations with Bodify.",
+                stats: "25% strength increase"
+              },
+              {
+                name: "Jessica L.",
+                achievement: "Marathon ready in 6 months",
+                quote: "From couch to marathon - Bodify's personalized training made the impossible possible.",
+                stats: "5x endurance improvement"
+              }
+            ].map((story, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card-premium text-center p-8 hover:scale-105 transition-all duration-300"
+              >
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold text-white">
+                  {story.name.charAt(0)}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{story.name}</h3>
+                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                  {story.achievement}
+                </Badge>
+                <p className="text-muted-foreground italic mb-4">"{story.quote}"</p>
+                <div className="text-sm font-semibold text-secondary">{story.stats}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Features Showcase */}
+      <section className="py-24 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              AI Technology That{' '}
+              <span className="text-gradient">Bodifies</span> Results
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Experience the future of fitness with cutting-edge AI that learns, adapts, and evolves with your body.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              {[
+                {
+                  icon: <Activity className="w-8 h-8" />,
+                  title: "Adaptive Workout Intelligence",
+                  description: "AI analyzes your performance in real-time, adjusting difficulty and form to maximize results while preventing injury."
+                },
+                {
+                  icon: <Heart className="w-8 h-8" />,
+                  title: "Nutritional DNA Analysis",
+                  description: "Personalized meal plans based on your metabolic profile, dietary preferences, and fitness goals."
+                },
+                {
+                  icon: <Target className="w-8 h-8" />,
+                  title: "Predictive Progress Modeling",
+                  description: "See your future transformation with AI-powered predictions and milestone tracking."
+                }
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="glassmorphism rounded-3xl p-8 text-center">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="w-40 h-40 mx-auto mb-6 bg-gradient-to-r from-primary via-secondary to-accent rounded-full flex items-center justify-center"
+                >
+                  <Zap className="w-16 h-16 text-white" />
+                </motion.div>
+                <h3 className="text-2xl font-bold mb-4">AI-Powered Coaching</h3>
+                <p className="text-muted-foreground">
+                  24/7 intelligent guidance that understands your body better than you do.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section className="py-24 bg-muted/20" id="pricing">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Choose Your Plan</h2>
-            <p className="text-lg text-muted-foreground">No free trial • Cancel anytime • 30-day guarantee</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Start Your{' '}
+              <span className="text-gradient">BODIFY YOUR BODY</span> Journey
+            </h2>
+            <p className="text-lg text-muted-foreground">Transform your body with AI-powered precision • Cancel anytime • 30-day guarantee</p>
           </div>
 
           <Card className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm">
