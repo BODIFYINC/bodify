@@ -50,7 +50,7 @@ const Navbar = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white hover:text-[#ff8800] bg-transparent data-[state=open]:bg-[#232946]/80 transition-colors">
+                <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent data-[state=open]:bg-muted/80 transition-colors">
                   Product
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -81,7 +81,7 @@ const Navbar = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-white hover:text-bodify-orange bg-transparent data-[state=open]:bg-[#232946]/80">
+                <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent data-[state=open]:bg-muted/80">
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -104,7 +104,7 @@ const Navbar = () => {
               
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link to="/faq" className="text-white hover:text-bodify-orange px-4 py-2 rounded-lg hover:bg-[#232946]/80 transition-all">
+                  <Link to="/faq" className="text-foreground hover:text-primary px-4 py-2 rounded-lg hover:bg-muted/80 transition-all">
                     FAQ
                   </Link>
                 </NavigationMenuLink>
@@ -113,10 +113,10 @@ const Navbar = () => {
           </NavigationMenu>
           
           <div className="flex items-center space-x-4 ml-8">
-            <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-[#232946]/80">
+            <a href="https://instagram.com/bodify.inc" target="_blank" rel="noreferrer" className="text-foreground hover:text-primary transition-colors p-2 rounded-lg hover:bg-muted/80">
               <Instagram size={20} />
             </a>
-            <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="text-white hover:text-bodify-orange transition-colors p-2 rounded-lg hover:bg-[#232946]/80">
+            <a href="https://tiktok.com/@bodify_inc" target="_blank" rel="noreferrer" className="text-foreground hover:text-primary transition-colors p-2 rounded-lg hover:bg-muted/80">
               <TikTokIcon />
             </a>
               <Link to="/login">
@@ -134,7 +134,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          <Button variant="ghost" className="text-white">
+          <Button variant="ghost" className="text-foreground">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>

@@ -16,18 +16,19 @@
     --popover: 220 13% 11%;
     --popover-foreground: 220 9% 98%;
 
-    /* Logo-Inspired Green & Cyan Theme */
-    --primary: 160 100% 40%; /* Bright Green */
-    --primary-foreground: 0 0% 100%;
+    /* Dark Professional Theme - Green & Cyan */
+    --primary: 160 84% 39%; /* Professional Green */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 160 100% 50%; /* Brighter for effects */
 
-    --secondary: 180 100% 50%; /* Cyan */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 180 84% 45%; /* Professional Cyan */
+    --secondary-foreground: 0 0% 98%;
 
     --muted: 220 13% 15%;
-    --muted-foreground: 220 9% 60%;
+    --muted-foreground: 220 9% 65%;
 
-    --accent: 170 90% 45%; /* Teal-Green Mix */
-    --accent-foreground: 0 0% 100%;
+    --accent: 170 84% 42%; /* Balanced Teal */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -47,14 +48,16 @@
     --sidebar-border: 220 13% 18%;
     --sidebar-ring: 160 84% 39%;
 
-    /* Enhanced Gradients */
+    /* Professional Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    --gradient-radial: radial-gradient(circle, hsl(var(--primary)/0.1), transparent);
-    --gradient-mesh: conic-gradient(from 180deg at 50% 50%, 
-      hsl(var(--primary)/0.1) 0deg, 
-      hsl(var(--secondary)/0.1) 120deg, 
-      hsl(var(--accent)/0.1) 240deg, 
-      hsl(var(--primary)/0.1) 360deg);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)/0.15), hsl(var(--secondary)/0.1));
+    --gradient-card: linear-gradient(135deg, hsl(var(--primary)/0.05), hsl(var(--secondary)/0.08));
+    --gradient-glow: radial-gradient(circle, hsl(var(--primary-glow)/0.2), transparent);
+    --gradient-mesh: linear-gradient(135deg, 
+      hsl(var(--background)) 0%, 
+      hsl(var(--primary)/0.03) 25%,
+      hsl(var(--secondary)/0.03) 75%,
+      hsl(var(--background)) 100%);
   }
 }
 

@@ -106,10 +106,10 @@ const Index = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight"
           >
-            <span className="block drop-shadow-2xl">BODIFY YOUR</span>
-            <span className="block bg-gradient-to-r from-white via-emerald-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
+            <span className="block text-foreground drop-shadow-2xl">BODIFY YOUR</span>
+            <span className="block text-gradient drop-shadow-2xl">
               BODY
             </span>
           </motion.h1>
@@ -120,7 +120,7 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
-            <p className="text-2xl md:text-3xl font-bold text-emerald-100 drop-shadow-lg">
+            <p className="text-2xl md:text-3xl font-bold text-primary drop-shadow-lg">
               Your Ultimate AI Fitness Companion
             </p>
           </motion.div>
@@ -129,7 +129,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
+            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
           >
             Revolutionary AI-powered fitness coaching that adapts to your unique body, goals, and lifestyle. 
             Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
@@ -194,7 +194,7 @@ const Index = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-emerald-600 px-16 py-5 rounded-full text-2xl font-bold hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/25 border-2 border-white/20 backdrop-blur-sm"
+              className="btn-primary px-16 py-5 rounded-full text-2xl font-bold transition-all duration-300 shadow-2xl"
             >
               <Link to="/get-started" className="flex items-center gap-3">
                 Start Your AI Fitness Journey
@@ -202,7 +202,7 @@ const Index = () => {
               </Link>
             </motion.button>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white/80">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-muted-foreground">
               {[
                 { icon: <Users className="w-5 h-5" />, text: '10K+ Users Transformed' },
                 { icon: <Trophy className="w-5 h-5" />, text: '95% Goal Achievement' },
@@ -215,7 +215,7 @@ const Index = () => {
                   transition={{ delay: 0.6 + i * 0.1 }}
                   className="flex items-center gap-3 justify-center"
                 >
-                  <div className="text-emerald-200">{stat.icon}</div>
+                  <div className="text-primary">{stat.icon}</div>
                   <span className="font-medium">{stat.text}</span>
                 </motion.div>
               ))}
