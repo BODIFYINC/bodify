@@ -1,424 +1,470 @@
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Target, Brain, Sparkles, Star, Dumbbell, Heart, Trophy, Users, TrendingUp } from 'lucide-react';
+import { Play, ArrowRight, Zap, Target, Users, Trophy, Sparkles, Star, ChevronDown, Shield, Heart, Activity } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import BodifyLogo from '@/components/BodifyLogo';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import Navbar from '@/components/Navbar';
+import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import FinalCTA from '@/sections/home/FinalCTA';
 
-export default function Index() {
+const Index = () => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+
+  const features = [
+    {
+      icon: <Activity className="w-8 h-8" />,
+      title: 'AI Personal Trainer',
+      description: 'Get personalized workouts powered by advanced AI that adapts to your fitness level and goals.',
+      gradient: 'from-blue-500/20 to-cyan-500/20',
+    },
+    {
+      icon: <Heart className="w-8 h-8" />,
+      title: 'Nutrition Intelligence',
+      description: "Smart meal planning with nutritional insights tailored to your body's needs and preferences.",
+      gradient: 'from-green-500/20 to-emerald-500/20',
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: 'Progress Analytics',
+      description: 'Track your transformation with detailed analytics and real-time progress monitoring.',
+      gradient: 'from-purple-500/20 to-pink-500/20',
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: 'Health Monitoring',
+      description: 'Comprehensive health tracking with wearable integration and vital sign monitoring.',
+      gradient: 'from-orange-500/20 to-red-500/20',
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % features.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [features.length]);
+
+  const HeroCard = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+      className="card-premium p-6 text-center backdrop-blur-xl"
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* SEO */}
+      <div className="sr-only">
+        <h1>Bodify - AI-Powered Fitness & Nutrition Platform</h1>
+        <p>Transform your body with personalized AI fitness coaching, smart nutrition plans, and comprehensive health tracking.</p>
+      </div>
+
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/3 to-accent/5" />
-        
-        <div className="container mx-auto px-6 text-center relative z-10">
+
+      {/* Hero Section with Emerald/Turquoise Theme */}
+      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 flex items-center justify-center overflow-hidden">
+        {/* Enhanced 3D Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute animate-float opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${8 + i}s`
+              }}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, 15, 0],
+                rotate: [0, 180, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 8 + i,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 shadow-2xl" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Parallax Background Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-r from-white/10 to-emerald-200/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-r from-cyan-200/20 to-white/10 rounded-full blur-3xl"
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          {/* Bodify Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="mb-12"
+          >
+            <BodifyLogo 
+              className="h-20 md:h-24 w-auto mx-auto filter drop-shadow-2xl"
+              alt="Bodify - Transform Your Body with AI"
+            />
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Badge className="mb-8 px-8 py-3 text-sm font-bold bg-white/20 backdrop-blur-sm border-white/30 text-white">
+              <Sparkles className="w-4 h-4 mr-2" /> AI-Powered Fitness Revolution
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-white"
+          >
+            <span className="block drop-shadow-2xl">Transform Your</span>
+            <span className="block bg-gradient-to-r from-white via-emerald-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
+              Body & Mind
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
+          >
+            Revolutionary AI-powered fitness coaching that adapts to your unique body, goals, and lifestyle. 
+            Experience personalized workouts, nutrition plans, and real-time guidance that evolves with you.
+          </motion.p>
+
+          {/* Interactive Feature Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto"
           >
-            <motion.h1 
-              className="text-7xl md:text-9xl font-black mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight"
-              animate={{ 
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-              style={{ backgroundSize: '300% 300%' }}
-            >
-              BODIFY
-            </motion.h1>
-            <motion.div 
-              className="text-3xl md:text-4xl font-medium mb-6 text-foreground/80"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              Transform Your Body with 
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold"> AI Precision</span>
-            </motion.div>
-            <motion.p 
-              className="text-xl md:text-2xl font-light mb-16 text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              Join thousands who've revolutionized their fitness journey with personalized AI coaching, smart nutrition tracking, and breakthrough workout optimization
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
-              <Button 
-                size="lg" 
-                className="text-xl px-16 py-8 rounded-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-primary/30 text-white font-semibold"
-              >
-                Start Free Trial
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-xl px-12 py-8 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300"
-              >
-                Watch Demo
-              </Button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div 
-              className="flex flex-wrap justify-center gap-12 mt-20 pt-16 border-t border-border/50"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              {[
-                { number: '50K+', label: 'Active Users' },
-                { number: '2M+', label: 'Workouts Completed' },
-                { number: '95%', label: 'Success Rate' },
-                { number: '4.9★', label: 'User Rating' }
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    {stat.number}
-                  </div>
-                  <div className="text-muted-foreground font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-        
-        {/* Animated Background Elements */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-3 h-3 bg-gradient-to-r from-primary to-secondary rounded-full opacity-30"
-            style={{
-              left: `${15 + i * 10}%`,
-              top: `${20 + (i % 3) * 20}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </section>
-
-      {/* Features Section */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            className="text-center mb-24"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-6xl md:text-7xl font-black mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Revolutionary Features
-            </h2>
-            <p className="text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Experience the next generation of fitness technology designed to maximize your potential
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              { icon: Brain, title: 'AI Coach', desc: 'Personal AI trainer that adapts to your progress and goals', color: 'from-blue-500 to-cyan-500' },
-              { icon: Target, title: 'Smart Goals', desc: 'Precision targeting with data-driven goal setting', color: 'from-green-500 to-emerald-500' },
-              { icon: Zap, title: 'Real-time', desc: 'Instant feedback and live performance optimization', color: 'from-yellow-500 to-orange-500' },
-              { icon: Trophy, title: 'Results', desc: 'Proven track record of transformational outcomes', color: 'from-purple-500 to-pink-500' }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-              >
-                <Card className="p-10 text-center bg-gradient-to-br from-card/90 via-card/80 to-muted/30 border-primary/20 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 group backdrop-blur-sm">
-                  <motion.div
-                    className={`w-20 h-20 mx-auto mb-8 bg-gradient-to-br ${feature.color} rounded-3xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-xl`}
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <feature.icon className="h-10 w-10 text-white" />
-                  </motion.div>
-                  <h3 className="text-2xl font-bold mb-6 text-foreground">{feature.title}</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">{feature.desc}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Bodify Section */}
-      <section className="py-32 bg-gradient-to-r from-primary/5 to-secondary/5">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Why Choose Bodify?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Advanced technology meets personalized fitness for unprecedented results
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { 
-                icon: Dumbbell, 
-                title: 'Smart Workouts', 
-                desc: 'AI-generated workout plans that adapt to your fitness level, schedule, and goals. Never get stuck in a routine again.',
-                stat: '10M+ workouts created'
+                icon: <Activity className="w-8 h-8" />, 
+                title: 'AI Personal Trainer', 
+                desc: 'Smart coaching that learns and adapts to your progress',
+                gradient: 'from-emerald-500/20 to-teal-500/20'
               },
               { 
-                icon: Heart, 
-                title: 'Health Integration', 
-                desc: 'Seamlessly sync with your favorite fitness trackers and health apps for comprehensive monitoring.',
-                stat: '95% user satisfaction'
+                icon: <Heart className="w-8 h-8" />, 
+                title: 'Custom Nutrition', 
+                desc: 'Personalized meal plans tailored to your goals and preferences',
+                gradient: 'from-teal-500/20 to-cyan-500/20'
               },
               { 
-                icon: TrendingUp, 
-                title: 'Progress Tracking', 
-                desc: 'Advanced analytics show your improvement over time with detailed insights and milestone celebrations.',
-                stat: '3x faster results'
-              },
-              { 
-                icon: Users, 
-                title: 'Community Support', 
-                desc: 'Connect with like-minded individuals, share achievements, and get motivated by success stories.',
-                stat: '50K+ active members'
-              },
-              { 
-                icon: Brain, 
-                title: 'Adaptive AI', 
-                desc: 'Machine learning algorithms that understand your preferences and continuously optimize your experience.',
-                stat: '99.7% accuracy rate'
-              },
-              { 
-                icon: Sparkles, 
-                title: 'Premium Experience', 
-                desc: 'Beautiful interface design with smooth animations and intuitive navigation for effortless fitness tracking.',
-                stat: 'Award-winning design'
+                icon: <Target className="w-8 h-8" />, 
+                title: 'Progress Analytics', 
+                desc: 'Real-time insights and comprehensive fitness tracking',
+                gradient: 'from-cyan-500/20 to-emerald-500/20'
               }
             ].map((feature, index) => (
-              <motion.div
+              <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer group shadow-2xl`}
+                whileHover={{ scale: 1.05, y: -8 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Card className="p-8 bg-card/90 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 h-full group">
-                  <motion.div
-                    className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <feature.icon className="h-8 w-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold mb-4 text-foreground">{feature.title}</h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{feature.desc}</p>
-                  <div className="text-sm font-semibold text-primary">{feature.stat}</div>
-                </Card>
+                <div className="text-white text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-100 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-white/80 leading-relaxed group-hover:text-white transition-colors">
+                  {feature.desc}
+                </p>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Enhanced CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col items-center gap-8"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-emerald-600 px-16 py-5 rounded-full text-2xl font-bold hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/25 border-2 border-white/20 backdrop-blur-sm"
+            >
+              <Link to="/get-started" className="flex items-center gap-3">
+                Start Your AI Fitness Journey
+                <ArrowRight className="w-6 h-6" />
+              </Link>
+            </motion.button>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white/80">
+              {[
+                { icon: <Users className="w-5 h-5" />, text: '10K+ Users Transformed' },
+                { icon: <Trophy className="w-5 h-5" />, text: '95% Goal Achievement' },
+                { icon: <Zap className="w-5 h-5" />, text: '24/7 AI Support' }
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="flex items-center gap-3 justify-center"
+                >
+                  <div className="text-emerald-200">{stat.icon}</div>
+                  <span className="font-medium">{stat.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Floating Stats Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          >
+            {[
+              { number: '50K+', label: 'Active Users', icon: <Users className="w-6 h-6" /> },
+              { number: '98%', label: 'Success Rate', icon: <Trophy className="w-6 h-6" /> },
+              { number: '24/7', label: 'AI Support', icon: <Zap className="w-6 h-6" /> },
+            ].map((stat, i) => (
+              <HeroCard key={i} delay={0.2 + i * 0.1}>
+                <div className="flex items-center justify-center mb-3 text-primary">{stat.icon}</div>
+                <div className="text-3xl font-bold mb-1 text-gradient">{stat.number}</div>
+                <div className="text-muted-foreground">{stat.label}</div>
+              </HeroCard>
+            ))}
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.6 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity }} className="text-muted-foreground">
+              <ChevronDown className="w-8 h-8" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Interactive Features Section */}
+      <section ref={featuresRef} className="py-28 bg-gradient-to-b from-background to-muted/30">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Why Choose{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Bodify?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Cutting-edge technology meets personalized fitness to deliver unprecedented results.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            {/* Feature Cards */}
+            <div className="space-y-5">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  onClick={() => setActiveFeature(index)}
+                  className={`card-premium p-6 cursor-pointer transition-all duration-500 ${
+                    activeFeature === index ? 'border-primary/50 bg-gradient-to-r ' + feature.gradient : 'hover:border-primary/30'
+                  }`}
+                >
+                  <div className="flex items-start gap-5">
+                    <div
+                      className={`p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} text-primary transition-all duration-500 ${
+                        activeFeature === index ? 'scale-110' : ''
+                      }`}
+                    >
+                      {feature.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Visual Display */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="relative h-[520px] glassmorphism rounded-3xl p-8 flex items-center justify-center"
+            >
+              <motion.div key={activeFeature} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="text-center">
+                <motion.div
+                  animate={{ rotateY: [0, 360] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                  className="w-40 h-40 mx-auto mb-6 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-5xl text-white shadow-glow"
+                >
+                  {features[activeFeature].icon}
+                </motion.div>
+                <h3 className="text-2xl font-bold mb-3">{features[activeFeature].title}</h3>
+                <p className="text-muted-foreground">{features[activeFeature].description}</p>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-32 bg-gradient-to-br from-background to-muted/20">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Success Stories
+      {/* CTA Section */}
+      <section className="py-28 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">Transform?</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real transformations from real people who chose Bodify
+            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
+              Join thousands who have already achieved their fitness goals with our AI-powered platform.
             </p>
+            <Button asChild size="lg" className="btn-primary px-14 py-7 text-xl font-bold group">
+              <Link to="/get-started">
+                Get Premium
+                <motion.div className="ml-3" animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <ArrowRight className="h-7 w-7" />
+                </motion.div>
+              </Link>
+            </Button>
           </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: 'Sarah M.', result: 'Lost 30lbs in 3 months', quote: 'Bodify completely changed my relationship with fitness. The AI coach knows exactly what I need!', rating: 5, avatar: '👩‍💼' },
-              { name: 'Mike R.', result: 'Gained 15lbs muscle', quote: 'The precision of the workouts is incredible. I\'ve never seen results this fast before.', rating: 5, avatar: '👨‍💻' },
-              { name: 'Emma L.', result: 'Marathon ready in 6 months', quote: 'From couch to marathon runner. Bodify made the impossible possible for me.', rating: 5, avatar: '👩‍🎨' }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="p-8 bg-card/90 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 h-full">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-xl mr-4">
-                      {testimonial.avatar}
-                    </div>
-                    <div>
-                      <div className="font-bold text-foreground">{testimonial.name}</div>
-                      <div className="text-primary font-semibold text-sm">{testimonial.result}</div>
-                    </div>
-                  </div>
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed italic">"{testimonial.quote}"</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-32 bg-gradient-to-r from-primary/5 to-secondary/5">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Choose Your Plan
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Start your transformation journey with flexible pricing options
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                name: 'Basic',
-                price: '$9.99',
-                period: '/month',
-                features: ['AI Workout Plans', 'Basic Nutrition Tracking', 'Progress Analytics', 'Community Access'],
-                popular: false
-              },
-              {
-                name: 'Pro',
-                price: '$19.99',
-                period: '/month',
-                features: ['Everything in Basic', 'Advanced AI Coach', 'Custom Meal Plans', 'Wearable Integration', 'Priority Support'],
-                popular: true
-              },
-              {
-                name: 'Elite',
-                price: '$39.99',
-                period: '/month',
-                features: ['Everything in Pro', '1-on-1 Coaching', 'Advanced Analytics', 'Supplement Recommendations', 'VIP Community'],
-                popular: false
-              }
-            ].map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-              >
-                <Card className={`p-8 text-center h-full relative ${plan.popular ? 'border-primary border-2 bg-gradient-to-br from-primary/5 to-secondary/5' : 'border-primary/20'} transition-all duration-300 hover:border-primary/40`}>
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-sm font-bold">
-                        Most Popular
-                      </div>
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-                  <div className="mb-6">
-                    <span className="text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
-                  </div>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-muted-foreground">
-                        <div className="w-5 h-5 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mr-3">
-                          <span className="text-white text-xs">✓</span>
-                        </div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    className={`w-full ${plan.popular ? 'bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white' : 'variant-outline'}`}
-                    size="lg"
-                  >
-                    Get Started
-                  </Button>
-                </Card>
-              </motion.div>
-            ))}
+      <section className="py-24 bg-muted/20" id="pricing">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Choose Your Plan</h2>
+            <p className="text-lg text-muted-foreground">No free trial • Cancel anytime • 30-day guarantee</p>
           </div>
+
+          <Card className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm">
+            <div className="p-8 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-bold mb-4">
+                BODIFY PREMIUM <span className="opacity-90">•</span> 50% OFF
+              </div>
+
+              <h3 className="text-3xl font-bold mb-4">Premium Access</h3>
+
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="text-muted-foreground text-2xl line-through">$40.00</span>
+                <span className="bg-destructive text-destructive-foreground text-sm font-bold px-3 py-1 rounded-full">50% OFF</span>
+              </div>
+
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <span className={billingCycle === 'monthly' ? 'text-foreground text-sm' : 'text-muted-foreground text-sm'}>Monthly</span>
+                <Switch checked={billingCycle === 'yearly'} onCheckedChange={(v) => setBillingCycle(v ? 'yearly' : 'monthly')} aria-label="Toggle yearly billing" />
+                <span className={billingCycle === 'yearly' ? 'text-foreground text-sm' : 'text-muted-foreground text-sm'}>
+                  Yearly <span className="ml-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-[10px] font-bold">2 months free</span>
+                </span>
+              </div>
+
+              <motion.div key={billingCycle} initial={{ opacity: 0, y: 10, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.25 }} className="flex items-center justify-center mb-6">
+                <span className="text-4xl font-semibold">$</span>
+                <span className="text-7xl font-bold">{billingCycle === 'yearly' ? '200' : '20'}</span>
+                <div className="flex flex-col items-start ml-2">
+                  <span className="text-2xl">.00</span>
+                  <span className="text-muted-foreground text-lg">{billingCycle === 'yearly' ? 'per year' : 'per month'}</span>
+                </div>
+              </motion.div>
+
+              <ul className="space-y-3 mb-8 text-left max-w-md mx-auto">
+                {[
+                  '24/7 AI Fitness Coach',
+                  'Unlimited Personalized Workouts',
+                  'Custom Meal Plans & Recipes',
+                  'Progress Tracking & Analytics',
+                  'Video Exercise Library',
+                  'Premium Community Access',
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center mr-3 flex-shrink-0">
+                      <span className="sr-only">check</span>
+                    </div>
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button asChild className="w-full text-lg py-6" size="lg">
+                <Link to="/get-started">
+                  Get Premium
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </Card>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-32">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-6xl md:text-7xl font-black mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Ready to Transform?
-            </h2>
-            <p className="text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-              Join the fitness revolution. Your perfect body is just one click away.
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
-                size="lg" 
-                className="text-2xl px-20 py-10 rounded-full bg-gradient-to-r from-primary via-secondary to-accent hover:from-accent hover:via-primary hover:to-secondary transition-all duration-700 transform shadow-2xl hover:shadow-primary/40 text-white font-bold"
-              >
-                Start Your Transformation
-                <ArrowRight className="ml-4 h-8 w-8" />
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Final CTA */}
+      <FinalCTA />
+
+      <Footer />
+
+      {/* Demo Dialog */}
+      <Dialog open={isDemoOpen} onOpenChange={setIsDemoOpen}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>Product Demo</DialogTitle>
+          </DialogHeader>
+          <div className="rounded-xl overflow-hidden">
+            <video controls playsInline preload="metadata" className="w-full h-auto">
+              <source src="https://cdn.pixabay.com/video/2017/09/06/12766-232470626_large.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
-}
+};
+
+export default Index;
