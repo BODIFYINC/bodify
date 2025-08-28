@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import bodifyLogo from '@/assets/bodify-logo-official.png';
+import bodifyLogo from '@/assets/bodify-logo-clean.png';
 
 interface LogoProps {
   className?: string;
