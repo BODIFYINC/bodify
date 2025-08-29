@@ -261,6 +261,29 @@
   .animate-gradient { animation: gradient-shift 4s ease infinite; }
   .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
   
+  /* Enhanced glow effect for premium elements */
+  .glow-effect {
+    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.4));
+  }
+  
+  .glow-effect:hover {
+    filter: drop-shadow(0 0 30px hsl(var(--primary) / 0.6)) drop-shadow(0 0 40px hsl(var(--secondary) / 0.3));
+  }
+  
+  /* Shadow effects */
+  .shadow-glow {
+    box-shadow: 
+      0 0 30px hsl(var(--primary)/0.4),
+      0 10px 40px hsl(var(--background)/0.6);
+  }
+  
+  .shadow-glow:hover {
+    box-shadow: 
+      0 0 50px hsl(var(--primary)/0.6),
+      0 0 80px hsl(var(--secondary)/0.4),
+      0 15px 50px hsl(var(--background)/0.8);
+  }
+  
   .backdrop-blur-heavy { backdrop-filter: blur(24px); }
   .text-shadow { text-shadow: 0 2px 10px hsl(var(--background)/0.5); }
   

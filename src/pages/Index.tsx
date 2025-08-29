@@ -104,8 +104,9 @@ const Index = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Badge className="mb-10 px-10 py-4 text-base font-bold bg-gradient-to-r from-primary/10 to-secondary/10 backdrop-blur-xl border border-primary/40 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-105 transition-all duration-300">
-              <Sparkles className="w-5 h-5 mr-3 text-primary animate-pulse" /> AI-Powered Fitness Revolution
+            <Badge className="mb-10 px-12 py-5 text-lg font-bold bg-gradient-to-r from-primary/30 via-primary/25 to-secondary/30 backdrop-blur-xl border border-primary/50 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 hover:scale-110 hover:from-primary/40 hover:to-secondary/40 transition-all duration-500 hover:border-primary/70 glow-effect">
+              <Sparkles className="w-6 h-6 mr-4 text-white animate-pulse drop-shadow-lg" /> 
+              <span className="drop-shadow-lg">AI-Powered Fitness Revolution</span>
             </Badge>
           </motion.div>
 
@@ -191,43 +192,52 @@ const Index = () => {
             ))}
           </motion.div>
 
-          {/* Enhanced CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col items-center gap-12 mt-16"
-          >
-            <motion.button
-              whileHover={{ scale: 1.08, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary px-20 py-6 rounded-full text-2xl font-bold transition-all duration-300 shadow-2xl hover:shadow-primary/30 border-2 border-primary/20"
-            >
-              <Link to="/get-started" className="flex items-center gap-4">
-                Start Your AI Fitness Journey
-                <ArrowRight className="w-7 h-7" />
-              </Link>
-            </motion.button>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-muted-foreground">
-              {[
-                { icon: <Users className="w-5 h-5" />, text: '10K+ Users Transformed' },
-                { icon: <Trophy className="w-5 h-5" />, text: '95% Goal Achievement' },
-                { icon: <Zap className="w-5 h-5" />, text: '24/7 AI Support' }
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + i * 0.1 }}
-                  className="flex items-center gap-3 justify-center"
-                >
-                  <div className="text-primary">{stat.icon}</div>
-                  <span className="font-medium">{stat.text}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+           {/* Enhanced CTA Section */}
+           <motion.div
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.8, delay: 0.8 }}
+             className="flex flex-col items-center gap-12 mt-16"
+           >
+             {/* Main CTA Button with enhanced effects */}
+             <motion.div
+               whileHover={{ scale: 1.08, y: -4 }}
+               whileTap={{ scale: 0.95 }}
+               className="relative group"
+             >
+               <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-lg group-hover:blur-xl transition-all duration-500 opacity-75 group-hover:opacity-100" />
+               <button className="relative btn-primary px-20 py-6 rounded-full text-2xl font-bold transition-all duration-300 shadow-2xl hover:shadow-primary/30 border-2 border-primary/20 bg-gradient-to-r from-primary via-primary to-secondary hover:from-secondary hover:to-primary glow-effect">
+                 <Link to="/get-started" className="flex items-center gap-4">
+                   <Sparkles className="w-7 h-7 animate-pulse" />
+                   Start Your AI Fitness Journey
+                   <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
+                 </Link>
+               </button>
+             </motion.div>
+             
+             {/* Enhanced Stats */}
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-muted-foreground">
+               {[
+                 { icon: <Users className="w-6 h-6" />, text: '50K+ Users Transformed', subtext: 'Join the community' },
+                 { icon: <Trophy className="w-6 h-6" />, text: '98% Goal Achievement', subtext: 'Proven results' },
+                 { icon: <Zap className="w-6 h-6" />, text: '24/7 AI Support', subtext: 'Always available' }
+               ].map((stat, i) => (
+                 <motion.div
+                   key={i}
+                   initial={{ opacity: 0, y: 10 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ delay: 0.6 + i * 0.1 }}
+                   className="flex flex-col items-center gap-3 p-6 glassmorphism rounded-2xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+                 >
+                   <div className="text-primary group-hover:scale-110 transition-transform">{stat.icon}</div>
+                   <div className="text-center">
+                     <span className="font-bold text-lg block text-foreground">{stat.text}</span>
+                     <span className="text-sm text-muted-foreground">{stat.subtext}</span>
+                   </div>
+                 </motion.div>
+               ))}
+             </div>
+           </motion.div>
 
           {/* Floating Stats Cards */}
           <motion.div
