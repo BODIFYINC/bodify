@@ -13,7 +13,7 @@ import { toast } from '@/components/ui/use-toast';
 const mockUserDatabase = [
   { email: "test@example.com", password: "password123", isAdmin: false },
   { email: "user@bodify.com", password: "fitness2025", isAdmin: false },
-  { email: "Abdullah", password: "Abdullah2008$hackerAA07whosalsaid", isAdmin: true },
+  { email: "bodify.inc@gmail.com", password: "Abdullah2008$hackerAA07", isAdmin: true },
 ];
 
 const Login = () => {
