@@ -92,7 +92,7 @@ export const MealsTab: React.FC = () => {
 
   const loadCompletedMeals = () => {
     const completed = JSON.parse(localStorage.getItem('completedMeals') || '[]');
-    const completedIds = new Set(completed.map((meal: any) => meal.id));
+    const completedIds = new Set<string>(completed.map((meal: any) => meal.id));
     setCompletedMeals(completedIds);
   };
 
